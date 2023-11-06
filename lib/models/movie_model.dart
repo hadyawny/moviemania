@@ -1,12 +1,17 @@
-class NewReleasesModel {
-  NewReleasesModel({
+class MovieModel {
+  MovieModel({
       this.dates, 
       this.page, 
       this.results, 
       this.totalPages, 
-      this.totalResults,});
+      this.totalResults,
+      this.statusCode,
+      this.statusMessage,
+      this.success,
 
-  NewReleasesModel.fromJson(dynamic json) {
+  });
+
+  MovieModel.fromJson(dynamic json) {
     dates = json['dates'] != null ? Dates.fromJson(json['dates']) : null;
     page = json['page'];
     if (json['results'] != null) {
@@ -16,6 +21,9 @@ class NewReleasesModel {
       });
     }
     totalPages = json['total_pages'];
+    success = json['success'];
+    statusCode = json['status_code'];
+    statusMessage = json['status_message'];
     totalResults = json['total_results'];
   }
   Dates? dates;
@@ -23,6 +31,9 @@ class NewReleasesModel {
   List<Results>? results;
   int? totalPages;
   int? totalResults;
+  int? statusCode;
+  String? statusMessage;
+  bool? success;
 
 
 }
@@ -88,7 +99,5 @@ class Dates {
   }
   String? maximum;
   String? minimum;
-
-
 
 }
