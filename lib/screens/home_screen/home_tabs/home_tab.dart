@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_model.dart';
@@ -25,8 +26,40 @@ class _HomeTabState extends State<HomeTab> {
       child: SafeArea(
         child: Column(
           children: [
-            PopularMovieCard(),
-            SizedBox(height: 30.h,),
+            FutureBuilder(
+              future: viewModel.getPopular(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text('Error: ${snapshot.error}'),
+                  );
+                }
+
+                List<Results> popular = snapshot.data!.results ?? [];
+
+                return CarouselSlider.builder(
+                    itemCount: popular.length,
+                    itemBuilder: (context, index, realIndex) {
+                      return PopularMovieCard(
+                        results: popular[index],
+                      );
+                    },
+                    options: CarouselOptions(
+                      viewportFraction: 1.0,
+                      enlargeCenterPage: false,
+                      autoPlayInterval: Duration(seconds: 3),
+                      autoPlay: true,
+                    ));
+              },
+            ),
+            SizedBox(
+              height: 30.h,
+            ),
             SizedBox(
               height: 200,
               child: Column(
@@ -65,10 +98,8 @@ class _HomeTabState extends State<HomeTab> {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return MovieCard(
-                                title: newReleases[index].title.toString(),
-                                date: newReleases[index].releaseDate.toString(),
-                                rating: newReleases[index].voteAverage.toString(),
-                                poster: newReleases[index].posterPath.toString());
+                              results: newReleases[index],
+                            );
                           },
                         ),
                       );
@@ -77,7 +108,9 @@ class _HomeTabState extends State<HomeTab> {
                 ],
               ),
             ),
-            SizedBox(height: 30.h,),
+            SizedBox(
+              height: 30.h,
+            ),
             SizedBox(
               height: 200,
               child: Column(
@@ -87,7 +120,7 @@ class _HomeTabState extends State<HomeTab> {
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 8.h),
                     child: Text(
-                      "Recommended",
+                      "Top Rated",
                       style: fontSmall.copyWith(fontSize: 15),
                     ),
                   ),
@@ -116,10 +149,8 @@ class _HomeTabState extends State<HomeTab> {
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return MovieCard(
-                                title: topRated[index].title.toString(),
-                                date: topRated[index].releaseDate.toString(),
-                                rating: topRated[index].voteAverage.toString(),
-                                poster: topRated[index].posterPath.toString());
+                              results: topRated[index],
+                            );
                           },
                         ),
                       );

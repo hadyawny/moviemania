@@ -32,4 +32,16 @@ class HomeTabViewModel extends ChangeNotifier {
     }
 
 
+   Future<MovieModel> getPopular ()async{
+      var jsonData = await ApiManager.getData(EndPoints.popular, {
+        "api_key":Constants.abiKey
+      });
+
+      MovieModel movieModel = MovieModel.fromJson(jsonData);
+
+      return movieModel;
+
+    }
+
+
 }

@@ -34,7 +34,7 @@ class MovieModel {
   int? statusCode;
   String? statusMessage;
   bool? success;
-
+  bool favourite=false;
 
 }
 
