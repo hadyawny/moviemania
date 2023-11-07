@@ -26,36 +26,39 @@ class _HomeTabState extends State<HomeTab> {
       child: SafeArea(
         child: Column(
           children: [
-            FutureBuilder(
-              future: viewModel.getPopular(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-                if (snapshot.hasError) {
-                  return Center(
-                    child: Text('Error: ${snapshot.error}'),
-                  );
-                }
+            SizedBox(
+              height: 289.h,
+              child: FutureBuilder(
+                future: viewModel.getPopular(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (snapshot.hasError) {
+                    return Center(
+                      child: Text('Error: ${snapshot.error}'),
+                    );
+                  }
 
-                List<Results> popular = snapshot.data!.results ?? [];
+                  List<Results> popular = snapshot.data!.results ?? [];
 
-                return CarouselSlider.builder(
-                    itemCount: popular.length,
-                    itemBuilder: (context, index, realIndex) {
-                      return PopularMovieCard(
-                        results: popular[index],
-                      );
-                    },
-                    options: CarouselOptions(
-                      viewportFraction: 1.0,
-                      enlargeCenterPage: false,
-                      autoPlayInterval: Duration(seconds: 3),
-                      autoPlay: true,
-                    ));
-              },
+                  return CarouselSlider.builder(
+                      itemCount: popular.length,
+                      itemBuilder: (context, index, realIndex) {
+                        return PopularMovieCard(
+                          results: popular[index],
+                        );
+                      },
+                      options: CarouselOptions(
+                        viewportFraction: 1.0,
+                        enlargeCenterPage: false,
+                        autoPlayInterval: const Duration(seconds: 3),
+                        autoPlay: true,
+                      ));
+                },
+              ),
             ),
             SizedBox(
               height: 30.h,

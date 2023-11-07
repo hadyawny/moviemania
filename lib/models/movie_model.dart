@@ -34,7 +34,6 @@ class MovieModel {
   int? statusCode;
   String? statusMessage;
   bool? success;
-  bool favourite=false;
 
 }
 
@@ -85,6 +84,8 @@ class Results {
   bool? video;
   double? voteAverage;
   int? voteCount;
+  bool favourite=false;
+
 
 }
 

@@ -2,23 +2,24 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_model.dart';
+import 'package:movies_app/services/routes/routes.dart';
 import 'package:movies_app/utils/constants.dart';
 import 'package:movies_app/utils/fonts.dart';
 
 class MovieCard extends StatefulWidget {
-  final Results results;
+   Results results;
 
-  const MovieCard({super.key, required this.results});
+   MovieCard({super.key, required this.results});
 
   @override
   State<MovieCard> createState() => _MovieCardState();
 }
 
 class _MovieCardState extends State<MovieCard> {
-  bool favourite = false;
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       width: 110.w,
       height: 184.h,
@@ -29,18 +30,23 @@ class _MovieCardState extends State<MovieCard> {
         children: [
           Stack(
             children: [
-              CachedNetworkImage(
-                imageUrl:
-                    Constants.imgPath + widget.results.posterPath.toString(),
-                width: 110.w,
-                height: 128.h,
-                fit: BoxFit.fill,
+              InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, AppRoute.movieDetails ,arguments: widget.results.id.toString());
+                },
+                child: CachedNetworkImage(
+                  imageUrl:
+                      Constants.imgPath + widget.results.posterPath.toString(),
+                  width: 110.w,
+                  height: 128.h,
+                  fit: BoxFit.fill,
+                ),
               ),
-              !favourite
+              !widget.results.favourite
                   ? InkWell(
                       onTap: () {
                         setState(() {
-                          favourite = !favourite;
+                          widget.results.favourite = !widget.results.favourite;
                         });
                       },
                       child: Image.asset(
@@ -51,7 +57,7 @@ class _MovieCardState extends State<MovieCard> {
                   : InkWell(
                       onTap: () {
                         setState(() {
-                          favourite = !favourite;
+                          widget.results.favourite = !widget.results.favourite;
                         });
                       },
                       child: Image.asset(
