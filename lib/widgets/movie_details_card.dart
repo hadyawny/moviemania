@@ -8,12 +8,10 @@ import '../utils/constants.dart';
 import '../utils/fonts.dart';
 
 class MovieDetailsCard extends StatefulWidget {
+  final MovieDetailsModel movieDetailsModel;
+  final Results results;
 
-  MovieDetailsModel movieDetailsModel;
-
-
-
-  MovieDetailsCard({super.key, required this.movieDetailsModel});
+  const MovieDetailsCard({super.key, required this.movieDetailsModel,required this.results});
 
   @override
   State<MovieDetailsCard> createState() => _MovieDetailsCardState();
@@ -22,13 +20,12 @@ class MovieDetailsCard extends StatefulWidget {
 class _MovieDetailsCardState extends State<MovieDetailsCard> {
   @override
   Widget build(BuildContext context) {
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CachedNetworkImage(
-          imageUrl:
-          Constants.imgPath + widget.movieDetailsModel.backdropPath.toString(),
+          imageUrl: Constants.imgPath +
+              widget.movieDetailsModel.backdropPath.toString(),
           width: 412.w,
           height: 217.h,
           fit: BoxFit.cover,
@@ -43,20 +40,26 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
               children: [
                 Text(
                   widget.movieDetailsModel.title.toString(),
+                  maxLines: 1,
                   style: fontSmall.copyWith(fontSize: 18),
                 ),
                 SizedBox(
                   height: 8.h,
                 ),
                 Text(
-                  widget.movieDetailsModel.releaseDate.toString().substring(0,4),
+                  widget.movieDetailsModel.releaseDate
+                      .toString()
+                      .substring(0, 4),
                   style: fontExtraSmall,
                 ),
               ],
             )),
         Container(
+          height: 199.h,
           margin: EdgeInsets.symmetric(horizontal: 22.w, vertical: 20.h),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Stack(
                 children: [
@@ -67,22 +70,47 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                     height: 199.h,
                     fit: BoxFit.fill,
                   ),
-
-                  Image.asset(
-                    "assets/images/bookmark.png",
-                    width: 27.w,
-                    height: 36.h,
-                  ),
+                  !widget.results.favourite
+                      ? InkWell(
+                      onTap: () {
+                        setState(() {
+                          widget.results.favourite = !widget.results.favourite;
+                        });
+                      },
+                      child: Image.asset(
+                        "assets/images/bookmark.png",
+                        width: 27.w,
+                        height: 36.h,
+                      ))
+                      : InkWell(
+                      onTap: () {
+                        setState(() {
+                          widget.results.favourite = !widget.results.favourite;
+                        });
+                      },
+                      child: Image.asset(
+                        "assets/images/favourite.png",
+                        width: 27.w,
+                        height: 36.h,
+                      )),
                 ],
               ),
-              SizedBox(width: 10.w,),
+              SizedBox(
+                width: 10.w,
+              ),
               Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(widget.movieDetailsModel.overview.toString().substring(0,260),style: fontSmall.copyWith(fontSize: 13),),
-                    SizedBox(height: 30.h,),
+                    Text(
+                      widget.movieDetailsModel.overview.toString().length > 270
+                          ? widget.movieDetailsModel.overview
+                              .toString()
+                              .substring(0, 270)
+                          : widget.movieDetailsModel.overview.toString(),
+                      style: fontSmall.copyWith(fontSize: 13),
+                    ),
+
                     Row(
                       children: [
                         SizedBox(
@@ -97,8 +125,11 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                           width: 5.w,
                         ),
                         Text(
-                          widget.movieDetailsModel.voteAverage.toString().substring(0, 3),
-                          style: fontSmall.copyWith(color: Colors.white,fontSize: 18),
+                          widget.movieDetailsModel.voteAverage
+                              .toString()
+                              .substring(0, 3),
+                          style: fontSmall.copyWith(
+                              color: Colors.white, fontSize: 18),
                         )
                       ],
                     ),

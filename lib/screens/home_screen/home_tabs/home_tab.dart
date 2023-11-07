@@ -27,7 +27,9 @@ class _HomeTabState extends State<HomeTab> {
         child: Column(
           children: [
             SizedBox(
-              height: 289.h,
+
+              width: 412.w,
+              height: 245.h,
               child: FutureBuilder(
                 future: viewModel.getPopular(),
                 builder: (context, snapshot) {
@@ -60,9 +62,7 @@ class _HomeTabState extends State<HomeTab> {
                 },
               ),
             ),
-            SizedBox(
-              height: 30.h,
-            ),
+            SizedBox(height: 30.h,),
             SizedBox(
               height: 200,
               child: Column(
@@ -77,7 +77,7 @@ class _HomeTabState extends State<HomeTab> {
                     ),
                   ),
                   SizedBox(
-                    height: 13.h,
+                    height: 20.h,
                   ),
                   FutureBuilder(
                     future: viewModel.getNewReleases(),
@@ -128,7 +128,7 @@ class _HomeTabState extends State<HomeTab> {
                     ),
                   ),
                   SizedBox(
-                    height: 13.h,
+                    height: 20.h,
                   ),
                   FutureBuilder(
                     future: viewModel.getTopRated(),
