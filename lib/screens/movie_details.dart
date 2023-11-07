@@ -9,7 +9,6 @@ import 'package:movies_app/widgets/movie_details_card.dart';
 import 'package:provider/provider.dart';
 
 class MovieDetails extends StatefulWidget {
-
   Results args;
 
   MovieDetails(this.args, {super.key});
@@ -36,7 +35,6 @@ class _MovieDetailsState extends State<MovieDetails> {
           elevation: 0,
         ),
         body: Column(
-
           children: [
             SizedBox(
               height: 520.h,
@@ -55,7 +53,8 @@ class _MovieDetailsState extends State<MovieDetails> {
                   }
                   MovieDetailsModel movieDetailsModel = snapshot.data!;
 
-                  return MovieDetailsCard(results: widget.args,
+                  return MovieDetailsCard(
+                    results: widget.args,
                     movieDetailsModel: movieDetailsModel,
                   );
                 },
@@ -79,7 +78,8 @@ class _MovieDetailsState extends State<MovieDetails> {
                     height: 20.h,
                   ),
                   FutureBuilder(
-                    future: viewModel.getSemilarMovies(widget.args.id.toString()),
+                    future:
+                        viewModel.getSemilarMovies(widget.args.id.toString()),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
