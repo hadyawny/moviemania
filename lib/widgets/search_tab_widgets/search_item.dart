@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_model.dart';
 import 'package:movies_app/services/routes/routes.dart';
-
-import '../../models/search_model.dart';
 import '../../utils/constants.dart';
 import '../../utils/fonts.dart';
 
