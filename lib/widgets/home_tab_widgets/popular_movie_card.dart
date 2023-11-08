@@ -104,7 +104,7 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                     InkWell(
                       onTap: () {
                         Navigator.pushNamed(context, AppRoute.movieDetails,
-                            arguments: widget.results.id.toString());
+                            arguments: widget.results);
                       },
                       child: CachedNetworkImage(
                         imageUrl: Constants.imgPath +
