@@ -11,5 +11,11 @@ class MyThemeData {
       unselectedItemColor: Colors.grey,
       backgroundColor: Colors.transparent,
     ),
+    appBarTheme: const AppBarTheme(
+
+      centerTitle: true,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+    )
   );
 }

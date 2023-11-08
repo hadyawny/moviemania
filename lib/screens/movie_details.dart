@@ -31,9 +31,6 @@ class _MovieDetailsState extends State<MovieDetails> {
             widget.args.title.toString(),
             style: fontSmall.copyWith(fontSize: 20),
           ),
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
         ),
         body: Column(
           children: [
