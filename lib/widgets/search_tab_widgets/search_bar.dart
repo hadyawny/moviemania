@@ -5,11 +5,9 @@ import 'package:movies_app/utils/fonts.dart';
 import '../../utils/colors.dart';
 
 class Searchbar extends StatefulWidget {
+  String search;
 
-   String search;
-
-
-   Searchbar({super.key, required this.search});
+  Searchbar({super.key, required this.search});
 
   @override
   State<Searchbar> createState() => _SearchbarState();
@@ -27,28 +25,20 @@ class _SearchbarState extends State<Searchbar> {
           });
         },
         maxLines: 1,
-        style:const TextStyle(color: Colors.white ),
+        style: const TextStyle(color: Colors.white),
         cursorColor: onNavSelected,
-
         decoration: InputDecoration(
-
             hintText: "Search",
-            hintStyle: fontSmall.copyWith(fontSize: 14.sp,color: Colors.grey),
+            hintStyle: fontSmall.copyWith(fontSize: 14.sp, color: Colors.grey),
             filled: true,
             fillColor: lightGrey,
             prefixIcon: const Icon(Icons.search),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50.sp),
-                borderSide: BorderSide(
-                    color: onNavSelected
-                )
-            ),
+                borderSide: BorderSide(color: onNavSelected)),
             border: OutlineInputBorder(
                 borderSide: BorderSide.none,
-                borderRadius: BorderRadius.circular(50.sp)
-            )
-
-        ),
+                borderRadius: BorderRadius.circular(50.sp))),
       ),
     );
   }

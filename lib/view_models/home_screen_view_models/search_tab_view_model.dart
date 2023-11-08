@@ -7,9 +7,8 @@ import 'package:movies_app/utils/constants.dart';
 
 class SearchTabViewModel extends ChangeNotifier {
   Future<SearchModel> getSearchResults(String search) async {
-
     var jsonData = await ApiManager.getData(
-        EndPoints.search, {"api_key": Constants.abiKey,"query":search});
+        EndPoints.search, {"api_key": Constants.abiKey, "query": search});
 
     SearchModel searchModel = SearchModel.fromJson(jsonData);
 

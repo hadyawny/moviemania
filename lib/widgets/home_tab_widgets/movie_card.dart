@@ -7,27 +7,26 @@ import 'package:movies_app/utils/constants.dart';
 import 'package:movies_app/utils/fonts.dart';
 
 class MovieCard extends StatefulWidget {
-    final Results results;
+  final Results results;
 
-   const MovieCard({super.key, required this.results});
+  const MovieCard({super.key, required this.results});
 
   @override
   State<MovieCard> createState() => _MovieCardState();
 }
 
 class _MovieCardState extends State<MovieCard> {
-
   @override
   Widget build(BuildContext context) {
-
     return Container(
       width: 110.w,
       height: 184.h,
       color: const Color(0xff343534),
       margin: EdgeInsets.symmetric(horizontal: 8.w),
       child: InkWell(
-        onTap: (){
-          Navigator.pushNamed(context, AppRoute.movieDetails ,arguments: widget.results);
+        onTap: () {
+          Navigator.pushNamed(context, AppRoute.movieDetails,
+              arguments: widget.results);
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +44,8 @@ class _MovieCardState extends State<MovieCard> {
                     ? InkWell(
                         onTap: () {
                           setState(() {
-                            widget.results.favourite = !widget.results.favourite;
+                            widget.results.favourite =
+                                !widget.results.favourite;
                           });
                         },
                         child: Image.asset(
@@ -56,7 +56,8 @@ class _MovieCardState extends State<MovieCard> {
                     : InkWell(
                         onTap: () {
                           setState(() {
-                            widget.results.favourite = !widget.results.favourite;
+                            widget.results.favourite =
+                                !widget.results.favourite;
                           });
                         },
                         child: Image.asset(
@@ -82,8 +83,10 @@ class _MovieCardState extends State<MovieCard> {
                 SizedBox(
                   width: 5.w,
                 ),
-                Text(widget.results.voteAverage.toString().length>3?
-                  widget.results.voteAverage.toString().substring(0, 3):widget.results.voteAverage.toString(),
+                Text(
+                  widget.results.voteAverage.toString().length > 3
+                      ? widget.results.voteAverage.toString().substring(0, 3)
+                      : widget.results.voteAverage.toString(),
                   style: fontExtraSmall.copyWith(color: Colors.white),
                 )
               ],
@@ -112,8 +115,10 @@ class _MovieCardState extends State<MovieCard> {
                 SizedBox(
                   width: 6.w,
                 ),
-                Text(widget.results.releaseDate.toString().length>4?
-                  widget.results.releaseDate.toString().substring(0, 4):widget.results.releaseDate.toString(),
+                Text(
+                  widget.results.releaseDate.toString().length > 4
+                      ? widget.results.releaseDate.toString().substring(0, 4)
+                      : widget.results.releaseDate.toString(),
                   style: fontExtraSmall.copyWith(fontSize: 8.sp),
                 )
               ],

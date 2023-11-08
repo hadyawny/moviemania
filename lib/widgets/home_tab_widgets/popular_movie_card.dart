@@ -76,9 +76,14 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                               SizedBox(
                                 width: 5.w,
                               ),
-                              Text(widget.results.voteAverage.toString().length>3?
-                              widget.results.voteAverage.toString().substring(0, 3):widget.results.voteAverage.toString(),
-                                style: fontExtraSmall.copyWith(color: Colors.white),
+                              Text(
+                                widget.results.voteAverage.toString().length > 3
+                                    ? widget.results.voteAverage
+                                        .toString()
+                                        .substring(0, 3)
+                                    : widget.results.voteAverage.toString(),
+                                style: fontExtraSmall.copyWith(
+                                    color: Colors.white),
                               )
                             ],
                           ),

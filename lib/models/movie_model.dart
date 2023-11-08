@@ -1,14 +1,13 @@
 class MovieModel {
   MovieModel({
-      this.dates, 
-      this.page, 
-      this.results, 
-      this.totalPages, 
-      this.totalResults,
-      this.statusCode,
-      this.statusMessage,
-      this.success,
-
+    this.dates,
+    this.page,
+    this.results,
+    this.totalPages,
+    this.totalResults,
+    this.statusCode,
+    this.statusMessage,
+    this.success,
   });
 
   MovieModel.fromJson(dynamic json) {
@@ -26,6 +25,7 @@ class MovieModel {
     statusMessage = json['status_message'];
     totalResults = json['total_results'];
   }
+
   Dates? dates;
   int? page;
   List<Results>? results;
@@ -34,25 +34,25 @@ class MovieModel {
   int? statusCode;
   String? statusMessage;
   bool? success;
-
 }
 
 class Results {
   Results({
-      this.adult, 
-      this.backdropPath, 
-      this.genreIds, 
-      this.id, 
-      this.originalLanguage, 
-      this.originalTitle, 
-      this.overview, 
-      this.popularity, 
-      this.posterPath, 
-      this.releaseDate, 
-      this.title, 
-      this.video, 
-      this.voteAverage, 
-      this.voteCount,});
+    this.adult,
+    this.backdropPath,
+    this.genreIds,
+    this.id,
+    this.originalLanguage,
+    this.originalTitle,
+    this.overview,
+    this.popularity,
+    this.posterPath,
+    this.releaseDate,
+    this.title,
+    this.video,
+    this.voteAverage,
+    this.voteCount,
+  });
 
   Results.fromJson(dynamic json) {
     adult = json['adult'];
@@ -70,6 +70,7 @@ class Results {
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
   }
+
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;
@@ -84,21 +85,20 @@ class Results {
   bool? video;
   double? voteAverage;
   int? voteCount;
-  bool favourite=false;
-
-
+  bool favourite = false;
 }
 
 class Dates {
   Dates({
-      this.maximum, 
-      this.minimum,});
+    this.maximum,
+    this.minimum,
+  });
 
   Dates.fromJson(dynamic json) {
     maximum = json['maximum'];
     minimum = json['minimum'];
   }
+
   String? maximum;
   String? minimum;
-
 }

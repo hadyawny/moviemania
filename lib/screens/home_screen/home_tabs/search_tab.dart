@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/models/search_model.dart';
 import 'package:movies_app/utils/colors.dart';
 import 'package:movies_app/utils/fonts.dart';
 import 'package:movies_app/view_models/home_screen_view_models/search_tab_view_model.dart';
 import 'package:provider/provider.dart';
-
-import '../../../widgets/search_tab_widgets/search_bar.dart';
+import '../../../models/movie_model.dart';
 import '../../../widgets/search_tab_widgets/search_item.dart';
 
 class SearchTab extends StatefulWidget {
@@ -73,13 +71,12 @@ class _SearchTabState extends State<SearchTab> {
                     );
                   }
 
-                  List<SearchResults> searchResults =
-                      snapshot.data!.results ?? [];
+                  List<Results> searchResults = snapshot.data!.results ?? [];
 
                   return Expanded(
                     child: ListView.builder(
                       itemBuilder: (context, index) {
-                        return SearchItem(searchResults: searchResults[index]);
+                        return SearchItem(results: searchResults[index]);
                       },
                       itemCount: searchResults.length,
                     ),

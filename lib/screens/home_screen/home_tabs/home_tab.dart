@@ -26,7 +26,6 @@ class _HomeTabState extends State<HomeTab> {
         child: Column(
           children: [
             SizedBox(
-
               width: 412.w,
               height: 245.h,
               child: FutureBuilder(
@@ -61,7 +60,9 @@ class _HomeTabState extends State<HomeTab> {
                 },
               ),
             ),
-            SizedBox(height: 30.h,),
+            SizedBox(
+              height: 30.h,
+            ),
             SizedBox(
               height: 200,
               child: Column(

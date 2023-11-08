@@ -3,12 +3,10 @@ import 'package:movies_app/models/movie_model.dart';
 import 'package:movies_app/models/search_model.dart';
 import 'package:movies_app/screens/home_screen/home_screen.dart';
 import 'package:movies_app/screens/movie_details.dart';
-import 'package:movies_app/screens/searched_movie_details.dart';
 
 class AppRoute {
   static const String home = "/";
   static const String movieDetails = "Movie Details";
-  static const String searchedMovieDetails = "Searched Movie Details";
 }
 
 class Routes {
@@ -20,18 +18,10 @@ class Routes {
         );
 
       case AppRoute.movieDetails:
-
-        final args = settings.arguments as Results ;
-
-        return MaterialPageRoute(
-          builder: (context) =>  MovieDetails(args),
-        );
-      case AppRoute.searchedMovieDetails:
-
-        final args = settings.arguments as SearchResults ;
+        final args = settings.arguments as Results;
 
         return MaterialPageRoute(
-          builder: (context) =>  SearchedMovieDetails(args),
+          builder: (context) => MovieDetails(args),
         );
 
       default:

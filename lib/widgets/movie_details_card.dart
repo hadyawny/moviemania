@@ -11,7 +11,8 @@ class MovieDetailsCard extends StatefulWidget {
   final MovieDetailsModel movieDetailsModel;
   final Results results;
 
-  const MovieDetailsCard({super.key, required this.movieDetailsModel,required this.results});
+  const MovieDetailsCard(
+      {super.key, required this.movieDetailsModel, required this.results});
 
   @override
   State<MovieDetailsCard> createState() => _MovieDetailsCardState();
@@ -72,27 +73,29 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                   ),
                   !widget.results.favourite
                       ? InkWell(
-                      onTap: () {
-                        setState(() {
-                          widget.results.favourite = !widget.results.favourite;
-                        });
-                      },
-                      child: Image.asset(
-                        "assets/images/bookmark.png",
-                        width: 27.w,
-                        height: 36.h,
-                      ))
+                          onTap: () {
+                            setState(() {
+                              widget.results.favourite =
+                                  !widget.results.favourite;
+                            });
+                          },
+                          child: Image.asset(
+                            "assets/images/bookmark.png",
+                            width: 27.w,
+                            height: 36.h,
+                          ))
                       : InkWell(
-                      onTap: () {
-                        setState(() {
-                          widget.results.favourite = !widget.results.favourite;
-                        });
-                      },
-                      child: Image.asset(
-                        "assets/images/favourite.png",
-                        width: 27.w,
-                        height: 36.h,
-                      )),
+                          onTap: () {
+                            setState(() {
+                              widget.results.favourite =
+                                  !widget.results.favourite;
+                            });
+                          },
+                          child: Image.asset(
+                            "assets/images/favourite.png",
+                            width: 27.w,
+                            height: 36.h,
+                          )),
                 ],
               ),
               SizedBox(
@@ -107,7 +110,6 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                       maxLines: 8,
                       style: fontSmall.copyWith(fontSize: 13),
                     ),
-
                     Row(
                       children: [
                         SizedBox(
