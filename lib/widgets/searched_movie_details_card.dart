@@ -3,21 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_details_model.dart';
 import 'package:movies_app/models/movie_model.dart';
+import 'package:movies_app/models/search_model.dart';
 
 import '../utils/constants.dart';
 import '../utils/fonts.dart';
 
-class MovieDetailsCard extends StatefulWidget {
+class SearchedMovieDetailsCard extends StatefulWidget {
   final MovieDetailsModel movieDetailsModel;
-  final Results results;
+  final SearchResults results;
 
-  const MovieDetailsCard({super.key, required this.movieDetailsModel,required this.results});
+  const SearchedMovieDetailsCard({super.key, required this.movieDetailsModel,required this.results});
 
   @override
-  State<MovieDetailsCard> createState() => _MovieDetailsCardState();
+  State<SearchedMovieDetailsCard> createState() => _MovieDetailsCardState();
 }
 
-class _MovieDetailsCardState extends State<MovieDetailsCard> {
+class _MovieDetailsCardState extends State<SearchedMovieDetailsCard> {
   @override
   Widget build(BuildContext context) {
     return Column(

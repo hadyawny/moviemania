@@ -2,22 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_details_model.dart';
 import 'package:movies_app/models/movie_model.dart';
+import 'package:movies_app/models/search_model.dart';
 import 'package:movies_app/utils/fonts.dart';
 import 'package:movies_app/view_models/movie_details_view_model.dart';
 import 'package:movies_app/widgets/home_tab_widgets/movie_card.dart';
 import 'package:movies_app/widgets/movie_details_card.dart';
+import 'package:movies_app/widgets/searched_movie_details_card.dart';
 import 'package:provider/provider.dart';
 
-class MovieDetails extends StatefulWidget {
-  final Results args;
+class SearchedMovieDetails extends StatefulWidget {
+  final SearchResults args;
 
-  const MovieDetails(this.args, {super.key});
+  const SearchedMovieDetails(this.args, {super.key});
 
   @override
-  State<MovieDetails> createState() => _MovieDetailsState();
+  State<SearchedMovieDetails> createState() => _MovieDetailsState();
 }
 
-class _MovieDetailsState extends State<MovieDetails> {
+class _MovieDetailsState extends State<SearchedMovieDetails> {
   MovieDetailsViewModel viewModel = MovieDetailsViewModel();
 
   @override
@@ -54,7 +56,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                   }
                   MovieDetailsModel movieDetailsModel = snapshot.data!;
 
-                  return MovieDetailsCard(
+                  return SearchedMovieDetailsCard(
                     results: widget.args,
                     movieDetailsModel: movieDetailsModel,
                   );

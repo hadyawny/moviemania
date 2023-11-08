@@ -16,7 +16,6 @@ class PopularMovieCard extends StatefulWidget {
 }
 
 class _PopularMovieCardState extends State<PopularMovieCard> {
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -57,7 +56,11 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            widget.results.releaseDate.toString(),
+                            widget.results.releaseDate.toString().length > 4
+                                ? widget.results.releaseDate
+                                    .toString()
+                                    .substring(0, 4)
+                                : widget.results.releaseDate.toString(),
                             style: fontExtraSmall,
                           ),
                           Row(
@@ -73,12 +76,9 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                               SizedBox(
                                 width: 5.w,
                               ),
-                              Text(
-                                widget.results.voteAverage
-                                    .toString()
-                                    .substring(0, 3),
-                                style: fontExtraSmall.copyWith(
-                                    color: Colors.white),
+                              Text(widget.results.voteAverage.toString().length>3?
+                              widget.results.voteAverage.toString().substring(0, 3):widget.results.voteAverage.toString(),
+                                style: fontExtraSmall.copyWith(color: Colors.white),
                               )
                             ],
                           ),
@@ -97,8 +97,9 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                 child: Stack(
                   children: [
                     InkWell(
-                      onTap: (){
-                        Navigator.pushNamed(context, AppRoute.movieDetails ,arguments: widget.results);
+                      onTap: () {
+                        Navigator.pushNamed(context, AppRoute.movieDetails,
+                            arguments: widget.results.id.toString());
                       },
                       child: CachedNetworkImage(
                         imageUrl: Constants.imgPath +
@@ -112,7 +113,8 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                         ? InkWell(
                             onTap: () {
                               setState(() {
-                                widget.results.favourite = !widget.results.favourite;
+                                widget.results.favourite =
+                                    !widget.results.favourite;
                               });
                             },
                             child: Image.asset(
@@ -123,7 +125,8 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                         : InkWell(
                             onTap: () {
                               setState(() {
-                                widget.results.favourite = !widget.results.favourite;
+                                widget.results.favourite =
+                                    !widget.results.favourite;
                               });
                             },
                             child: Image.asset(

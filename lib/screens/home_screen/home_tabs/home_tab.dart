@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_model.dart';
 import 'package:movies_app/utils/fonts.dart';
-import 'package:movies_app/viewmodels/home_screen_view_model/home_tab_view_model.dart';
+import 'package:movies_app/view_models/home_screen_view_models/home_tab_view_model.dart';
 import 'package:movies_app/widgets/home_tab_widgets/movie_card.dart';
 import 'package:provider/provider.dart';
-
 import '../../../widgets/home_tab_widgets/popular_movie_card.dart';
 
 class HomeTab extends StatefulWidget {

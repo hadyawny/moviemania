@@ -4,6 +4,7 @@ class EndPoints {
   static const String topRated = "/3/movie/top_rated";
   static const String movieDetails = "/3/movie/";
   static const String similar = "/similar";
+  static const String search = "/3/search/movie";
 
 
 }
