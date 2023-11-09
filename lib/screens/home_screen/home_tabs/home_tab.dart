@@ -6,6 +6,7 @@ import 'package:movies_app/utils/fonts.dart';
 import 'package:movies_app/view_models/home_screen_view_models/home_tab_view_model.dart';
 import 'package:movies_app/widgets/home_tab_widgets/movie_card.dart';
 import 'package:provider/provider.dart';
+import '../../../services/providers/watch_list_provider.dart';
 import '../../../widgets/home_tab_widgets/popular_movie_card.dart';
 
 class HomeTab extends StatefulWidget {
@@ -20,6 +21,8 @@ class _HomeTabState extends State<HomeTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<WatchListProvider>(context);
+
     return ChangeNotifierProvider(
       create: (context) => viewModel,
       child: SafeArea(
@@ -47,6 +50,13 @@ class _HomeTabState extends State<HomeTab> {
                   return CarouselSlider.builder(
                       itemCount: popular.length,
                       itemBuilder: (context, index, realIndex) {
+
+                        for(int i =0;i<provider.watchListIds.length;i++){
+                          if(provider.watchListIds[i]==popular[index].id){
+                            popular[index].favourite=true;
+                          }
+                        }
+
                         return PopularMovieCard(
                           results: popular[index],
                         );
@@ -100,6 +110,14 @@ class _HomeTabState extends State<HomeTab> {
                           itemCount: newReleases.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
+
+                            for(int i =0;i<provider.watchListIds.length;i++){
+                              if(provider.watchListIds[i]==newReleases[index].id){
+                                newReleases[index].favourite=true;
+                              }
+                            }
+
+
                             return MovieCard(
                               results: newReleases[index],
                             );
@@ -151,6 +169,11 @@ class _HomeTabState extends State<HomeTab> {
                           itemCount: topRated.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
+                            for(int i =0;i<provider.watchListIds.length;i++){
+                              if(provider.watchListIds[i]==topRated[index].id){
+                                topRated[index].favourite=true;
+                              }
+                            }
                             return MovieCard(
                               results: topRated[index],
                             );

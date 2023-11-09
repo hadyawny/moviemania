@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_model.dart';
 import 'package:movies_app/services/firebase/firebase_manager.dart';
+import 'package:movies_app/services/providers/watch_list_provider.dart';
 import 'package:movies_app/services/routes/routes.dart';
 import 'package:movies_app/utils/constants.dart';
 import 'package:movies_app/utils/fonts.dart';
+import 'package:provider/provider.dart';
 
 class MovieCard extends StatefulWidget {
   final Results results;
@@ -19,6 +21,9 @@ class MovieCard extends StatefulWidget {
 class _MovieCardState extends State<MovieCard> {
   @override
   Widget build(BuildContext context) {
+
+    var provider = Provider.of<WatchListProvider>(context);
+
     return Container(
       width: 110.w,
       height: 184.h,
@@ -48,6 +53,7 @@ class _MovieCardState extends State<MovieCard> {
                             widget.results.favourite =
                                 !widget.results.favourite;
                             FirebaseManager.addMovie(widget.results);
+                            provider.addWatchListId(widget.results.id!);
                           });
                         },
                         child: Image.asset(
@@ -61,6 +67,7 @@ class _MovieCardState extends State<MovieCard> {
                             widget.results.favourite =
                                 !widget.results.favourite;
                             FirebaseManager.deleteMovie(widget.results);
+                            provider.removeWatchListId(widget.results.id!);
                           });
                         },
                         child: Image.asset(

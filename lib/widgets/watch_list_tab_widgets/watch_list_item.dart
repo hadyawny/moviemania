@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_model.dart';
 import 'package:movies_app/services/routes/routes.dart';
+import 'package:provider/provider.dart';
 import '../../services/firebase/firebase_manager.dart';
+import '../../services/providers/watch_list_provider.dart';
 import '../../utils/constants.dart';
 import '../../utils/fonts.dart';
 
@@ -19,6 +21,8 @@ class WatchListItem extends StatefulWidget {
 class _WatchListItemState extends State<WatchListItem> {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<WatchListProvider>(context);
+
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, AppRoute.movieDetails,
@@ -59,6 +63,7 @@ class _WatchListItemState extends State<WatchListItem> {
                             widget.results.favourite =
                                 !widget.results.favourite;
                             FirebaseManager.deleteMovie(widget.results);
+                            provider.removeWatchListId(widget.results.id!);
                           });
                         },
                         child: Image.asset(

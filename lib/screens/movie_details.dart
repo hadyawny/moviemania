@@ -8,6 +8,8 @@ import 'package:movies_app/widgets/home_tab_widgets/movie_card.dart';
 import 'package:movies_app/widgets/movie_details_card.dart';
 import 'package:provider/provider.dart';
 
+import '../services/providers/watch_list_provider.dart';
+
 class MovieDetails extends StatefulWidget {
   final Results args;
 
@@ -22,6 +24,8 @@ class _MovieDetailsState extends State<MovieDetails> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<WatchListProvider>(context);
+
     return ChangeNotifierProvider(
       create: (context) => viewModel,
       child: Scaffold(
@@ -97,6 +101,11 @@ class _MovieDetailsState extends State<MovieDetails> {
                           itemCount: similar.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
+                            for(int i =0;i<provider.watchListIds.length;i++){
+                              if(provider.watchListIds[i]==similar[index].id){
+                                similar[index].favourite=true;
+                              }
+                            }
                             return MovieCard(
                               results: similar[index],
                             );

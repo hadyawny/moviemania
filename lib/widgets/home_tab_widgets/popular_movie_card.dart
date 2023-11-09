@@ -5,8 +5,10 @@ import 'package:movies_app/models/movie_model.dart';
 import 'package:movies_app/services/routes/routes.dart';
 import 'package:movies_app/utils/constants.dart';
 import 'package:movies_app/utils/fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../services/firebase/firebase_manager.dart';
+import '../../services/providers/watch_list_provider.dart';
 
 class PopularMovieCard extends StatefulWidget {
   final Results results;
@@ -20,6 +22,8 @@ class PopularMovieCard extends StatefulWidget {
 class _PopularMovieCardState extends State<PopularMovieCard> {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<WatchListProvider>(context);
+
     return SizedBox(
       width: 412.w,
       height: 289.h,
@@ -123,6 +127,8 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                                 widget.results.favourite =
                                     !widget.results.favourite;
                                 FirebaseManager.addMovie(widget.results);
+                                provider.addWatchListId(widget.results.id!);
+
                               });
                             },
                             child: Image.asset(
@@ -136,6 +142,8 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                                 widget.results.favourite =
                                     !widget.results.favourite;
                                 FirebaseManager.deleteMovie(widget.results);
+                                provider.removeWatchListId(widget.results.id!);
+
                               });
                             },
                             child: Image.asset(
