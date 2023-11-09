@@ -122,6 +122,7 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                               setState(() {
                                 widget.results.favourite =
                                     !widget.results.favourite;
+                                FirebaseManager.addMovie(widget.results);
                               });
                             },
                             child: Image.asset(
@@ -134,8 +135,7 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                               setState(() {
                                 widget.results.favourite =
                                     !widget.results.favourite;
-                                FirebaseManager.addMovie(widget.results);
-
+                                FirebaseManager.deleteMovie(widget.results);
                               });
                             },
                             child: Image.asset(

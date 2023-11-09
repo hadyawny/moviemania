@@ -45,7 +45,6 @@ class _MovieCardState extends State<MovieCard> {
                     ? InkWell(
                         onTap: () {
                           setState(() {
-
                             widget.results.favourite =
                                 !widget.results.favourite;
                             FirebaseManager.addMovie(widget.results);
@@ -61,6 +60,7 @@ class _MovieCardState extends State<MovieCard> {
                           setState(() {
                             widget.results.favourite =
                                 !widget.results.favourite;
+                            FirebaseManager.deleteMovie(widget.results);
                           });
                         },
                         child: Image.asset(

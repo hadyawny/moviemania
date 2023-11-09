@@ -15,4 +15,8 @@ class FirebaseManager {
     var docRef = collection.doc(movie.id.toString());
     docRef.set(movie);
   }
+
+  static void deleteMovie(Results movie) {
+    getWatchListCollection().doc(movie.id.toString()).delete();
+  }
 }

@@ -78,7 +78,6 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                               widget.results.favourite =
                                   !widget.results.favourite;
                               FirebaseManager.addMovie(widget.results);
-
                             });
                           },
                           child: Image.asset(
@@ -91,6 +90,7 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                             setState(() {
                               widget.results.favourite =
                                   !widget.results.favourite;
+                              FirebaseManager.deleteMovie(widget.results);
                             });
                           },
                           child: Image.asset(
