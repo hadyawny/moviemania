@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/models/genres_model.dart';
 import 'package:movies_app/models/movie_details_model.dart';
 import 'package:movies_app/services/routes/routes.dart';
 
@@ -17,7 +16,7 @@ class CategoryCard extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(context, AppRoute.movieGenre, arguments: genres);
       },
-      child: Container(
+      child: SizedBox(
         width: 180.w,
         height: 120.h,
         child: Stack(
@@ -28,7 +27,7 @@ class CategoryCard extends StatelessWidget {
             Container(
               width: 180.w,
               height: 120.h,
-              color: Color.fromRGBO(0, 0, 0, 0.5),
+              color: const Color.fromRGBO(0, 0, 0, 0.5),
             ),
             Text(
               genres.name.toString(),

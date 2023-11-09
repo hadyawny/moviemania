@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/models/genres_model.dart';
 import 'package:movies_app/utils/fonts.dart';
 import 'package:movies_app/view_models/home_screen_view_models/browse_tab_view_model.dart';
 import 'package:provider/provider.dart';

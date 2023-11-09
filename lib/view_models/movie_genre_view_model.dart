@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/movie_details_model.dart';
 import 'package:movies_app/models/movie_model.dart';
-import 'package:movies_app/models/search_model.dart';
 import 'package:movies_app/services/api/api_manager.dart';
 import 'package:movies_app/services/api/end_points.dart';
 import 'package:movies_app/utils/constants.dart';
