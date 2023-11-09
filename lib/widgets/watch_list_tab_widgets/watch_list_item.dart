@@ -25,7 +25,7 @@ class _WatchListItemState extends State<WatchListItem> {
             arguments: widget.results);
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 15.h, horizontal: 30.w),
+        margin: EdgeInsets.symmetric(vertical: 15.h, horizontal: 20.w),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,

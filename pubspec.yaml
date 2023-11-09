@@ -43,6 +43,21 @@ dependencies:
   carousel_slider: ^4.2.1
   firebase_core: ^2.21.0
   cloud_firestore: ^4.12.2
+  flutter_native_splash: ^2.3.5
+
+
+flutter_native_splash:
+
+  color: "#242A32"
+  image: assets/images/splash_icon.png
+
+
+  android_12:
+    color: "#242A32"
+    image: assets/images/splash_icon.png
+
+
+
 
 dev_dependencies:
   flutter_test:

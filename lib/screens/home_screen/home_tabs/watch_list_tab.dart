@@ -27,11 +27,11 @@ class _WatchListTabState extends State<WatchListTab> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 30.h),
+              padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.h),
               child: Text(
                 "Watch List",
                 style: fontSmall.copyWith(
-                    fontSize: 25, fontWeight: FontWeight.w500),
+                    fontSize: 25.sp, fontWeight: FontWeight.w500),
               ),
             ),
             StreamBuilder<QuerySnapshot<Results>>(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_details_model.dart';
 import 'package:movies_app/services/routes/routes.dart';
-
 import '../../utils/fonts.dart';
 
 class CategoryCard extends StatelessWidget {

@@ -22,17 +22,16 @@ class _BrowseTabState extends State<BrowseTab> {
         create: (context) => viewModel,
         child: SafeArea(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 20.h,
-                ),
                 Text(
-                  "Browse Category ",
-                  style: fontSmall.copyWith(fontSize: 22.sp),
+                  "Browse Categories",
+                  style: fontSmall.copyWith(
+                      fontSize: 25.sp, fontWeight: FontWeight.w500),
                 ),
+
                 SizedBox(
                   height: 20.h,
                 ),
