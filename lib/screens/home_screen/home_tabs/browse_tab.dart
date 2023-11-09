@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/utils/fonts.dart';
 import 'package:movies_app/view_models/home_screen_view_models/browse_tab_view_model.dart';
 import 'package:provider/provider.dart';
-
 import '../../../models/movie_details_model.dart';
 import '../../../widgets/browse_tab_widgets/category_card.dart';
 
@@ -32,7 +31,7 @@ class _BrowseTabState extends State<BrowseTab> {
                 ),
                 Text(
                   "Browse Category ",
-                  style: fontSmall.copyWith(fontSize: 22),
+                  style: fontSmall.copyWith(fontSize: 22.sp),
                 ),
                 SizedBox(
                   height: 20.h,

@@ -42,7 +42,7 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                 Text(
                   widget.movieDetailsModel.title.toString(),
                   maxLines: 1,
-                  style: fontSmall.copyWith(fontSize: 18),
+                  style: fontSmall.copyWith(fontSize: 18.sp),
                 ),
                 SizedBox(
                   height: 8.h,
@@ -51,7 +51,7 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                   widget.movieDetailsModel.releaseDate
                       .toString()
                       .substring(0, 4),
-                  style: fontExtraSmall,
+                  style: fontExtraSmall.copyWith(fontSize: 14.sp),
                 ),
               ],
             )),
@@ -110,7 +110,7 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                     Text(
                       widget.movieDetailsModel.overview.toString(),
                       maxLines: 8,
-                      style: fontSmall.copyWith(fontSize: 13),
+                      style: fontSmall.copyWith(fontSize: 13.sp),
                     ),
                     Row(
                       children: [
@@ -130,7 +130,7 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                               .toString()
                               .substring(0, 3),
                           style: fontSmall.copyWith(
-                              color: Colors.white, fontSize: 18),
+                              color: Colors.white, fontSize: 18.sp),
                         )
                       ],
                     ),

@@ -64,7 +64,7 @@ class _HomeTabState extends State<HomeTab> {
               height: 30.h,
             ),
             SizedBox(
-              height: 200,
+              height: 230.h,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +73,7 @@ class _HomeTabState extends State<HomeTab> {
                     margin: EdgeInsets.symmetric(horizontal: 8.h),
                     child: Text(
                       "New Releases ",
-                      style: fontSmall.copyWith(fontSize: 15),
+                      style: fontSmall.copyWith(fontSize: 15.sp),
                     ),
                   ),
                   SizedBox(
@@ -115,7 +115,7 @@ class _HomeTabState extends State<HomeTab> {
               height: 30.h,
             ),
             SizedBox(
-              height: 200,
+              height: 230.h,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -124,7 +124,7 @@ class _HomeTabState extends State<HomeTab> {
                     margin: EdgeInsets.symmetric(horizontal: 8.h),
                     child: Text(
                       "Top Rated",
-                      style: fontSmall.copyWith(fontSize: 15),
+                      style: fontSmall.copyWith(fontSize: 15.sp),
                     ),
                   ),
                   SizedBox(

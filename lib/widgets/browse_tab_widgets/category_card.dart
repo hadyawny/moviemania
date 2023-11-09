@@ -31,8 +31,8 @@ class CategoryCard extends StatelessWidget {
             ),
             Text(
               genres.name.toString(),
-              style:
-                  fontSmall.copyWith(fontWeight: FontWeight.bold, fontSize: 18),
+              style: fontSmall.copyWith(
+                  fontWeight: FontWeight.bold, fontSize: 18.sp),
             )
           ],
         ),

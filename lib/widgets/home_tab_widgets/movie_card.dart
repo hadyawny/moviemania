@@ -95,7 +95,7 @@ class _MovieCardState extends State<MovieCard> {
               ],
             ),
             SizedBox(
-              height: 2.h,
+              height: 5.h,
             ),
             Row(
               children: [
@@ -111,7 +111,7 @@ class _MovieCardState extends State<MovieCard> {
               ],
             ),
             SizedBox(
-              height: 2.h,
+              height: 5.h,
             ),
             Row(
               children: [
@@ -122,7 +122,7 @@ class _MovieCardState extends State<MovieCard> {
                   widget.results.releaseDate.toString().length > 4
                       ? widget.results.releaseDate.toString().substring(0, 4)
                       : widget.results.releaseDate.toString(),
-                  style: fontExtraSmall.copyWith(fontSize: 8.sp),
+                  style: fontExtraSmall.copyWith(fontSize: 10.sp),
                 )
               ],
             ),

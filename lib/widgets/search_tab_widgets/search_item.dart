@@ -38,7 +38,7 @@ class SearchItem extends StatelessWidget {
                 children: [
                   Text(
                     results.title.toString(),
-                    style: fontSmall.copyWith(fontSize: 15),
+                    style: fontSmall.copyWith(fontSize: 15.sp),
                     maxLines: 1,
                   ),
                   SizedBox(
@@ -48,7 +48,7 @@ class SearchItem extends StatelessWidget {
                     results.releaseDate.toString().length > 4
                         ? results.releaseDate.toString().substring(0, 4)
                         : results.releaseDate.toString(),
-                    style: fontExtraSmall.copyWith(fontSize: 13),
+                    style: fontExtraSmall.copyWith(fontSize: 13.sp),
                     maxLines: 1,
                   ),
                   SizedBox(

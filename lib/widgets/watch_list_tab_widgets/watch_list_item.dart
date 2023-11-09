@@ -77,7 +77,7 @@ class _WatchListItemState extends State<WatchListItem> {
                 children: [
                   Text(
                     widget.results.title.toString(),
-                    style: fontSmall.copyWith(fontSize: 15),
+                    style: fontSmall.copyWith(fontSize: 15.sp),
                     maxLines: 1,
                   ),
                   SizedBox(

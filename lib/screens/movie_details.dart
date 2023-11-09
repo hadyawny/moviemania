@@ -29,7 +29,7 @@ class _MovieDetailsState extends State<MovieDetails> {
         appBar: AppBar(
           title: Text(
             widget.args.title.toString(),
-            style: fontSmall.copyWith(fontSize: 20),
+            style: fontSmall.copyWith(fontSize: 20.sp),
           ),
         ),
         body: Column(
@@ -59,7 +59,7 @@ class _MovieDetailsState extends State<MovieDetails> {
               ),
             ),
             Container(
-              height: 200,
+              height: 230.h,
               margin: EdgeInsets.symmetric(horizontal: 15.w),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -69,7 +69,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                     margin: EdgeInsets.symmetric(horizontal: 8.w),
                     child: Text(
                       "More Like This",
-                      style: fontSmall.copyWith(fontSize: 15),
+                      style: fontSmall.copyWith(fontSize: 15.sp),
                     ),
                   ),
                   SizedBox(
