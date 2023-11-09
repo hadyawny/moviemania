@@ -7,9 +7,9 @@ import '../view_models/movie_genre_view_model.dart';
 import '../widgets/search_tab_widgets/search_item.dart';
 
 class MovieGenre extends StatefulWidget {
-  Genres args;
+  final Genres args;
 
-  MovieGenre({super.key, required this.args});
+  const MovieGenre({super.key, required this.args});
 
   @override
   State<MovieGenre> createState() => _MovieGenreState();

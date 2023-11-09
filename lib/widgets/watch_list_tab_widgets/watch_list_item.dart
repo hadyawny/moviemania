@@ -8,9 +8,9 @@ import '../../utils/constants.dart';
 import '../../utils/fonts.dart';
 
 class WatchListItem extends StatefulWidget {
-  Results results;
+  final Results results;
 
-  WatchListItem({super.key, required this.results});
+  const WatchListItem({super.key, required this.results});
 
   @override
   State<WatchListItem> createState() => _WatchListItemState();

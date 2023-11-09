@@ -5,9 +5,9 @@ import 'package:movies_app/services/routes/routes.dart';
 import '../../utils/fonts.dart';
 
 class CategoryCard extends StatelessWidget {
-  Genres genres;
+  final Genres genres;
 
-  CategoryCard({super.key, required this.genres});
+  const CategoryCard({super.key, required this.genres});
 
   @override
   Widget build(BuildContext context) {

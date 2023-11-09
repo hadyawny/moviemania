@@ -7,9 +7,9 @@ import '../../utils/constants.dart';
 import '../../utils/fonts.dart';
 
 class SearchItem extends StatelessWidget {
-  Results results;
+  final Results results;
 
-  SearchItem({super.key, required this.results});
+  const SearchItem({super.key, required this.results});
 
   @override
   Widget build(BuildContext context) {
