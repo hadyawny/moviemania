@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_model.dart';
+import 'package:movies_app/services/firebase/firebase_manager.dart';
 import 'package:movies_app/services/routes/routes.dart';
 import 'package:movies_app/utils/constants.dart';
 import 'package:movies_app/utils/fonts.dart';
@@ -44,8 +45,10 @@ class _MovieCardState extends State<MovieCard> {
                     ? InkWell(
                         onTap: () {
                           setState(() {
+
                             widget.results.favourite =
                                 !widget.results.favourite;
+                            FirebaseManager.addMovie(widget.results);
                           });
                         },
                         child: Image.asset(

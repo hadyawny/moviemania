@@ -69,6 +69,11 @@ class Results {
     video = json['video'];
     voteAverage = json['vote_average'].toDouble();
     voteCount = json['vote_count'];
+    if (json['favourite'] == null) {
+      favourite = false;
+    } else {
+      favourite = json['favourite'];
+    }
   }
 
   bool? adult;
@@ -86,6 +91,26 @@ class Results {
   double? voteAverage;
   int? voteCount;
   bool favourite = false;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['adult'] = adult;
+    map['backdrop_path'] = backdropPath;
+    map['genre_ids'] = genreIds;
+    map['id'] = id;
+    map['original_language'] = originalLanguage;
+    map['original_title'] = originalTitle;
+    map['overview'] = overview;
+    map['popularity'] = popularity;
+    map['poster_path'] = posterPath;
+    map['release_date'] = releaseDate;
+    map['title'] = title;
+    map['video'] = video;
+    map['vote_average'] = voteAverage;
+    map['vote_count'] = voteCount;
+    map['favourite'] = favourite;
+    return map;
+  }
 }
 
 class Dates {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_details_model.dart';
 import 'package:movies_app/models/movie_model.dart';
+import '../services/firebase/firebase_manager.dart';
 import '../utils/constants.dart';
 import '../utils/fonts.dart';
 
@@ -76,6 +77,8 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                             setState(() {
                               widget.results.favourite =
                                   !widget.results.favourite;
+                              FirebaseManager.addMovie(widget.results);
+
                             });
                           },
                           child: Image.asset(

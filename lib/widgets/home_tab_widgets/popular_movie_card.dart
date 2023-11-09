@@ -6,6 +6,8 @@ import 'package:movies_app/services/routes/routes.dart';
 import 'package:movies_app/utils/constants.dart';
 import 'package:movies_app/utils/fonts.dart';
 
+import '../../services/firebase/firebase_manager.dart';
+
 class PopularMovieCard extends StatefulWidget {
   final Results results;
 
@@ -132,6 +134,8 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                               setState(() {
                                 widget.results.favourite =
                                     !widget.results.favourite;
+                                FirebaseManager.addMovie(widget.results);
+
                               });
                             },
                             child: Image.asset(
