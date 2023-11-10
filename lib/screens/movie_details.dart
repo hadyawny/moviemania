@@ -36,88 +36,90 @@ class _MovieDetailsState extends State<MovieDetails> {
             style: fontSmall.copyWith(fontSize: 20.sp),
           ),
         ),
-        body: Column(
-          children: [
-            SizedBox(
-              height: 520.h,
-              child: FutureBuilder(
-                future: viewModel.getMovieDetails(widget.args.id.toString()),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                  if (snapshot.hasError) {
-                    return Center(
-                      child: Text('Error: ${snapshot.error}'),
-                    );
-                  }
-                  MovieDetailsModel movieDetailsModel = snapshot.data!;
-
-                  return MovieDetailsCard(
-                    results: widget.args,
-                    movieDetailsModel: movieDetailsModel,
-                  );
-                },
-              ),
-            ),
-            Container(
-              height: 230.h,
-              margin: EdgeInsets.symmetric(horizontal: 15.w),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 8.w),
-                    child: Text(
-                      "More Like This",
-                      style: fontSmall.copyWith(fontSize: 15.sp),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  FutureBuilder(
-                    future:
-                        viewModel.getSemilarMovies(widget.args.id.toString()),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
-                      if (snapshot.hasError) {
-                        return Center(
-                          child: Text('Error: ${snapshot.error}'),
-                        );
-                      }
-
-                      List<Results> similar = snapshot.data!.results ?? [];
-
-                      return Expanded(
-                        child: ListView.builder(
-                          itemCount: similar.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            for(int i =0;i<provider.watchListIds.length;i++){
-                              if(provider.watchListIds[i]==similar[index].id){
-                                similar[index].favourite=true;
-                              }
-                            }
-                            return MovieCard(
-                              results: similar[index],
-                            );
-                          },
-                        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 520.h,
+                child: FutureBuilder(
+                  future: viewModel.getMovieDetails(widget.args.id.toString()),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
                       );
-                    },
-                  ),
-                ],
+                    }
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text('Error: ${snapshot.error}'),
+                      );
+                    }
+                    MovieDetailsModel movieDetailsModel = snapshot.data!;
+
+                    return MovieDetailsCard(
+                      results: widget.args,
+                      movieDetailsModel: movieDetailsModel,
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+              Container(
+                height: 230.h,
+                margin: EdgeInsets.symmetric(horizontal: 15.w),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 8.w),
+                      child: Text(
+                        "More Like This",
+                        style: fontSmall.copyWith(fontSize: 15.sp),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    FutureBuilder(
+                      future:
+                          viewModel.getSemilarMovies(widget.args.id.toString()),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        if (snapshot.hasError) {
+                          return Center(
+                            child: Text('Error: ${snapshot.error}'),
+                          );
+                        }
+
+                        List<Results> similar = snapshot.data!.results ?? [];
+
+                        return Expanded(
+                          child: ListView.builder(
+                            itemCount: similar.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              for(int i =0;i<provider.watchListIds.length;i++){
+                                if(provider.watchListIds[i]==similar[index].id){
+                                  similar[index].favourite=true;
+                                }
+                              }
+                              return MovieCard(
+                                results: similar[index],
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

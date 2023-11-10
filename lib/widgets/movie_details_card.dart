@@ -25,130 +25,134 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<WatchListProvider>(context);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CachedNetworkImage(
-          imageUrl: Constants.imgPath +
-              widget.movieDetailsModel.backdropPath.toString(),
-          width: 412.w,
-          height: 217.h,
-          fit: BoxFit.cover,
-        ),
-        SizedBox(
-          height: 13.h,
-        ),
-        Container(
-            margin: EdgeInsets.symmetric(horizontal: 22.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.movieDetailsModel.title.toString(),
-                  maxLines: 1,
-                  style: fontSmall.copyWith(fontSize: 18.sp),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Text(
-                  widget.movieDetailsModel.releaseDate
-                      .toString()
-                      .substring(0, 4),
-                  style: fontExtraSmall.copyWith(fontSize: 14.sp),
-                ),
-              ],
-            )),
-        Container(
-          height: 199.h,
-          margin: EdgeInsets.symmetric(horizontal: 22.w, vertical: 20.h),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Stack(
+    return SizedBox(
+      height:440.h,
+      width: 412.w,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CachedNetworkImage(
+            imageUrl: Constants.imgPath +
+                widget.movieDetailsModel.backdropPath.toString(),
+            width: 412.w,
+            height: 217.h,
+            fit: BoxFit.cover,
+          ),
+          SizedBox(
+            height: 13.h,
+          ),
+          Container(
+              margin: EdgeInsets.symmetric(horizontal: 22.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CachedNetworkImage(
-                    imageUrl: Constants.imgPath +
-                        widget.movieDetailsModel.posterPath.toString(),
-                    width: 129.w,
-                    height: 199.h,
-                    fit: BoxFit.fill,
+                  Text(
+                    widget.movieDetailsModel.title.toString(),
+                    maxLines: 1,
+                    style: fontSmall.copyWith(fontSize: 18.sp),
                   ),
-                  !widget.results.favourite
-                      ? InkWell(
-                          onTap: () {
-                            setState(() {
-                              widget.results.favourite =
-                                  !widget.results.favourite;
-                              FirebaseManager.addMovie(widget.results);
-                              provider.addWatchListId(widget.results.id!);
-                              provider.updateProvider();
-                            });
-                          },
-                          child: Image.asset(
-                            "assets/images/bookmark.png",
-                            width: 27.w,
-                            height: 36.h,
-                          ))
-                      : InkWell(
-                          onTap: () {
-                            setState(() {
-                              widget.results.favourite =
-                                  !widget.results.favourite;
-                              FirebaseManager.deleteMovie(widget.results);
-                              provider.removeWatchListId(widget.results.id!);
-                              provider.updateProvider();
-                            });
-                          },
-                          child: Image.asset(
-                            "assets/images/favourite.png",
-                            width: 27.w,
-                            height: 36.h,
-                          )),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  Text(
+                    widget.movieDetailsModel.releaseDate
+                        .toString()
+                        .substring(0, 4),
+                    style: fontExtraSmall.copyWith(fontSize: 14.sp),
+                  ),
                 ],
-              ),
-              SizedBox(
-                width: 10.w,
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              )),
+          Container(
+            height: 199.h,
+            margin: EdgeInsets.symmetric(horizontal: 22.w, vertical: 20.h),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Stack(
                   children: [
-                    Text(
-                      widget.movieDetailsModel.overview.toString(),
-                      maxLines: 8,
-                      style: fontSmall.copyWith(fontSize: 13.sp),
+                    CachedNetworkImage(
+                      imageUrl: Constants.imgPath +
+                          widget.movieDetailsModel.posterPath.toString(),
+                      width: 129.w,
+                      height: 199.h,
+                      fit: BoxFit.fill,
                     ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 5.w,
-                        ),
-                        Icon(
-                          Icons.star,
-                          color: Colors.yellow,
-                          size: 20.r,
-                        ),
-                        SizedBox(
-                          width: 5.w,
-                        ),
-                        Text(
-                          widget.movieDetailsModel.voteAverage
-                              .toString()
-                              .substring(0, 3),
-                          style: fontSmall.copyWith(
-                              color: Colors.white, fontSize: 18.sp),
-                        )
-                      ],
-                    ),
+                    !widget.results.favourite
+                        ? InkWell(
+                            onTap: () {
+                              setState(() {
+                                widget.results.favourite =
+                                    !widget.results.favourite;
+                                FirebaseManager.addMovie(widget.results);
+                                provider.addWatchListId(widget.results.id!);
+                                provider.updateProvider();
+                              });
+                            },
+                            child: Image.asset(
+                              "assets/images/bookmark.png",
+                              width: 27.w,
+                              height: 36.h,
+                            ))
+                        : InkWell(
+                            onTap: () {
+                              setState(() {
+                                widget.results.favourite =
+                                    !widget.results.favourite;
+                                FirebaseManager.deleteMovie(widget.results);
+                                provider.removeWatchListId(widget.results.id!);
+                                provider.updateProvider();
+                              });
+                            },
+                            child: Image.asset(
+                              "assets/images/favourite.png",
+                              width: 27.w,
+                              height: 36.h,
+                            )),
                   ],
                 ),
-              )
-            ],
-          ),
-        )
-      ],
+                SizedBox(
+                  width: 10.w,
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        widget.movieDetailsModel.overview.toString(),
+                        maxLines: 8,
+                        style: fontSmall.copyWith(fontSize: 13.sp),
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 5.w,
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: Colors.yellow,
+                            size: 20.r,
+                          ),
+                          SizedBox(
+                            width: 5.w,
+                          ),
+                          Text(
+                            widget.movieDetailsModel.voteAverage
+                                .toString()
+                                .substring(0, 3),
+                            style: fontSmall.copyWith(
+                                color: Colors.white, fontSize: 18.sp),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

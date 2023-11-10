@@ -26,166 +26,168 @@ class _HomeTabState extends State<HomeTab> {
     return ChangeNotifierProvider(
       create: (context) => viewModel,
       child: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(
-              width: 412.w,
-              height: 245.h,
-              child: FutureBuilder(
-                future: viewModel.getPopular(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                  if (snapshot.hasError) {
-                    return Center(
-                      child: Text('Error: ${snapshot.error}'),
-                    );
-                  }
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                width: 412.w,
+                height: 245.h,
+                child: FutureBuilder(
+                  future: viewModel.getPopular(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text('Error: ${snapshot.error}'),
+                      );
+                    }
 
-                  List<Results> popular = snapshot.data!.results ?? [];
+                    List<Results> popular = snapshot.data!.results ?? [];
 
-                  return CarouselSlider.builder(
-                      itemCount: popular.length,
-                      itemBuilder: (context, index, realIndex) {
+                    return CarouselSlider.builder(
+                        itemCount: popular.length,
+                        itemBuilder: (context, index, realIndex) {
 
-                        for(int i =0;i<provider.watchListIds.length;i++){
-                          if(provider.watchListIds[i]==popular[index].id){
-                            popular[index].favourite=true;
+                          for(int i =0;i<provider.watchListIds.length;i++){
+                            if(provider.watchListIds[i]==popular[index].id){
+                              popular[index].favourite=true;
+                            }
                           }
+
+                          return PopularMovieCard(
+                            results: popular[index],
+                          );
+                        },
+                        options: CarouselOptions(
+                          viewportFraction: 1.0,
+                          enlargeCenterPage: false,
+                          autoPlayInterval: const Duration(seconds: 3),
+                          autoPlay: true,
+                        ));
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 30.h,
+              ),
+              SizedBox(
+                height: 230.h,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 8.h),
+                      child: Text(
+                        "New Releases ",
+                        style: fontSmall.copyWith(fontSize: 15.sp),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    FutureBuilder(
+                      future: viewModel.getNewReleases(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        if (snapshot.hasError) {
+                          return Center(
+                            child: Text('Error: ${snapshot.error}'),
+                          );
                         }
 
-                        return PopularMovieCard(
-                          results: popular[index],
+                        List<Results> newReleases = snapshot.data!.results ?? [];
+
+                        return Expanded(
+                          child: ListView.builder(
+                            itemCount: newReleases.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+
+                              for(int i =0;i<provider.watchListIds.length;i++){
+                                if(provider.watchListIds[i]==newReleases[index].id){
+                                  newReleases[index].favourite=true;
+                                }
+                              }
+
+
+                              return MovieCard(
+                                results: newReleases[index],
+                              );
+                            },
+                          ),
                         );
                       },
-                      options: CarouselOptions(
-                        viewportFraction: 1.0,
-                        enlargeCenterPage: false,
-                        autoPlayInterval: const Duration(seconds: 3),
-                        autoPlay: true,
-                      ));
-                },
-              ),
-            ),
-            SizedBox(
-              height: 30.h,
-            ),
-            SizedBox(
-              height: 230.h,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 8.h),
-                    child: Text(
-                      "New Releases ",
-                      style: fontSmall.copyWith(fontSize: 15.sp),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  FutureBuilder(
-                    future: viewModel.getNewReleases(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
-                      if (snapshot.hasError) {
-                        return Center(
-                          child: Text('Error: ${snapshot.error}'),
-                        );
-                      }
-
-                      List<Results> newReleases = snapshot.data!.results ?? [];
-
-                      return Expanded(
-                        child: ListView.builder(
-                          itemCount: newReleases.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-
-                            for(int i =0;i<provider.watchListIds.length;i++){
-                              if(provider.watchListIds[i]==newReleases[index].id){
-                                newReleases[index].favourite=true;
-                              }
-                            }
-
-
-                            return MovieCard(
-                              results: newReleases[index],
-                            );
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 30.h,
-            ),
-            SizedBox(
-              height: 230.h,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 8.h),
-                    child: Text(
-                      "Top Rated",
-                      style: fontSmall.copyWith(fontSize: 15.sp),
+              SizedBox(
+                height: 30.h,
+              ),
+              SizedBox(
+                height: 230.h,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 8.h),
+                      child: Text(
+                        "Top Rated",
+                        style: fontSmall.copyWith(fontSize: 15.sp),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  FutureBuilder(
-                    future: viewModel.getTopRated(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
-                      if (snapshot.hasError) {
-                        return Center(
-                          child: Text('Error: ${snapshot.error}'),
-                        );
-                      }
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    FutureBuilder(
+                      future: viewModel.getTopRated(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        if (snapshot.hasError) {
+                          return Center(
+                            child: Text('Error: ${snapshot.error}'),
+                          );
+                        }
 
-                      List<Results> topRated = snapshot.data!.results ?? [];
+                        List<Results> topRated = snapshot.data!.results ?? [];
 
-                      return Expanded(
-                        child: ListView.builder(
-                          itemCount: topRated.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            for(int i =0;i<provider.watchListIds.length;i++){
-                              if(provider.watchListIds[i]==topRated[index].id){
-                                topRated[index].favourite=true;
+                        return Expanded(
+                          child: ListView.builder(
+                            itemCount: topRated.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              for(int i =0;i<provider.watchListIds.length;i++){
+                                if(provider.watchListIds[i]==topRated[index].id){
+                                  topRated[index].favourite=true;
+                                }
                               }
-                            }
-                            return MovieCard(
-                              results: topRated[index],
-                            );
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                ],
+                              return MovieCard(
+                                results: topRated[index],
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
