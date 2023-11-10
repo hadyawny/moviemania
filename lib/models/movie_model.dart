@@ -58,7 +58,7 @@ class Results {
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     genreIds = json['genre_ids'] != null ? json['genre_ids'].cast<int>() : [];
-    id = json['id'];
+    id = json['id'].toString();
     originalLanguage = json['original_language'];
     originalTitle = json['original_title'];
     overview = json['overview'];
@@ -79,7 +79,7 @@ class Results {
   bool? adult;
   String? backdropPath;
   List<int>? genreIds;
-  int? id;
+  String? id;
   String? originalLanguage;
   String? originalTitle;
   String? overview;

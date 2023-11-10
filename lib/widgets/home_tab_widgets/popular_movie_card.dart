@@ -77,7 +77,7 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                               Icon(
                                 Icons.star,
                                 color: Colors.yellow,
-                                size: 15.sp,
+                                size: 15.r,
                               ),
                               SizedBox(
                                 width: 5.w,
@@ -128,7 +128,6 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                                     !widget.results.favourite;
                                 FirebaseManager.addMovie(widget.results);
                                 provider.addWatchListId(widget.results.id!);
-
                               });
                             },
                             child: Image.asset(
@@ -143,7 +142,6 @@ class _PopularMovieCardState extends State<PopularMovieCard> {
                                     !widget.results.favourite;
                                 FirebaseManager.deleteMovie(widget.results);
                                 provider.removeWatchListId(widget.results.id!);
-
                               });
                             },
                             child: Image.asset(

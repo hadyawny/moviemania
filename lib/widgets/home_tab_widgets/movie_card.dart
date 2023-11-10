@@ -21,7 +21,6 @@ class MovieCard extends StatefulWidget {
 class _MovieCardState extends State<MovieCard> {
   @override
   Widget build(BuildContext context) {
-
     var provider = Provider.of<WatchListProvider>(context);
 
     return Container(
@@ -88,7 +87,7 @@ class _MovieCardState extends State<MovieCard> {
                 Icon(
                   Icons.star,
                   color: Colors.yellow,
-                  size: 15.sp,
+                  size: 15.r,
                 ),
                 SizedBox(
                   width: 5.w,

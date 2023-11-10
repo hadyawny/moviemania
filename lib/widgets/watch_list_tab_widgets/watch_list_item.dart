@@ -103,7 +103,7 @@ class _WatchListItemState extends State<WatchListItem> {
                       Icon(
                         Icons.star,
                         color: Colors.yellow,
-                        size: 15.sp,
+                        size: 15.r,
                       ),
                       SizedBox(
                         width: 5.w,

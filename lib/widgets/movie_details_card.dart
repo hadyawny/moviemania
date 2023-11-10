@@ -120,7 +120,7 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                         Icon(
                           Icons.star,
                           color: Colors.yellow,
-                          size: 20.sp,
+                          size: 20.r,
                         ),
                         SizedBox(
                           width: 5.w,

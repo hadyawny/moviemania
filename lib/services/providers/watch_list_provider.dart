@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/services/cache/shared_pref.dart';
 
-class WatchListProvider extends ChangeNotifier{
+class WatchListProvider extends ChangeNotifier {
+  List<String> watchListIds = [];
 
-  List<int> watchListIds = [];
+  void init() async {
+    List<String> newWatchListIds = SharedPrefs.getList();
+    watchListIds = newWatchListIds;
+  }
 
-
-  addWatchListId(int id){
-
+  addWatchListId(String id) {
     watchListIds.add(id);
-    notifyListeners();
-
+    SharedPrefs.saveList(watchListIds);
   }
-  removeWatchListId(int id){
 
+  removeWatchListId(String id) {
     watchListIds.remove(id);
-    notifyListeners();
-
+    SharedPrefs.saveList(watchListIds);
   }
-
-
 }
