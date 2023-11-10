@@ -83,7 +83,7 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                                   !widget.results.favourite;
                               FirebaseManager.addMovie(widget.results);
                               provider.addWatchListId(widget.results.id!);
-
+                              provider.updateProvider();
                             });
                           },
                           child: Image.asset(
@@ -98,6 +98,7 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                                   !widget.results.favourite;
                               FirebaseManager.deleteMovie(widget.results);
                               provider.removeWatchListId(widget.results.id!);
+                              provider.updateProvider();
                             });
                           },
                           child: Image.asset(

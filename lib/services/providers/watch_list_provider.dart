@@ -18,4 +18,9 @@ class WatchListProvider extends ChangeNotifier {
     watchListIds.remove(id);
     SharedPrefs.saveList(watchListIds);
   }
+
+  updateProvider(){
+    notifyListeners();
+  }
+
 }
