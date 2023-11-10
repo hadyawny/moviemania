@@ -25,7 +25,7 @@ class _MovieCardState extends State<MovieCard> {
 
     return Container(
       width: 110.w,
-      height: 184.h,
+      height: 200.h,
       color: const Color(0xff343534),
       margin: EdgeInsets.symmetric(horizontal: 8.w),
       child: InkWell(
@@ -42,7 +42,7 @@ class _MovieCardState extends State<MovieCard> {
                   imageUrl:
                       Constants.imgPath + widget.results.posterPath.toString(),
                   width: 110.w,
-                  height: 128.h,
+                  height: 140.h,
                   fit: BoxFit.fill,
                 ),
                 !widget.results.favourite
@@ -79,59 +79,64 @@ class _MovieCardState extends State<MovieCard> {
             SizedBox(
               height: 7.h,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 5.w,
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 6.w,
+                        ),
+                        Text(
+                          widget.results.title.toString().length > 17
+                              ? widget.results.title.toString().substring(0, 17)
+                              : widget.results.title.toString(),
+                          style: fontExtraSmall.copyWith(color: Colors.white),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: 15.r,
+                        ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        Text(
+                          widget.results.voteAverage.toString().length > 3
+                              ? widget.results.voteAverage
+                                  .toString()
+                                  .substring(0, 3)
+                              : widget.results.voteAverage.toString(),
+                          style: fontExtraSmall.copyWith(color: Colors.white),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Text(
+                          widget.results.releaseDate.toString().length > 4
+                              ? widget.results.releaseDate
+                                  .toString()
+                                  .substring(0, 4)
+                              : widget.results.releaseDate.toString(),
+                          style: fontExtraSmall.copyWith(fontSize: 10.sp),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
-                Icon(
-                  Icons.star,
-                  color: Colors.yellow,
-                  size: 15.r,
-                ),
-                SizedBox(
-                  width: 5.w,
-                ),
-                Text(
-                  widget.results.voteAverage.toString().length > 3
-                      ? widget.results.voteAverage.toString().substring(0, 3)
-                      : widget.results.voteAverage.toString(),
-                  style: fontExtraSmall.copyWith(color: Colors.white),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 6.w,
-                ),
-                Text(
-                  widget.results.title.toString().length > 17
-                      ? widget.results.title.toString().substring(0, 17)
-                      : widget.results.title.toString(),
-                  style: fontExtraSmall.copyWith(color: Colors.white),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 6.w,
-                ),
-                Text(
-                  widget.results.releaseDate.toString().length > 4
-                      ? widget.results.releaseDate.toString().substring(0, 4)
-                      : widget.results.releaseDate.toString(),
-                  style: fontExtraSmall.copyWith(fontSize: 10.sp),
-                )
-              ],
-            ),
+              ),
+            )
           ],
         ),
       ),

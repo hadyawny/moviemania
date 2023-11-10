@@ -63,6 +63,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                   },
                 ),
               ),
+              SizedBox(height: 20.h,),
               Container(
                 height: 230.h,
                 margin: EdgeInsets.symmetric(horizontal: 15.w),

@@ -21,12 +21,11 @@ class MovieDetailsCard extends StatefulWidget {
 }
 
 class _MovieDetailsCardState extends State<MovieDetailsCard> {
-
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<WatchListProvider>(context);
     return SizedBox(
-      height:440.h,
+      height: 440.h,
       width: 412.w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +62,7 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                 ],
               )),
           Container(
-            height: 199.h,
+            height: 200.h,
             margin: EdgeInsets.symmetric(horizontal: 22.w, vertical: 20.h),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,32 +117,39 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        widget.movieDetailsModel.overview.toString(),
-                        maxLines: 8,
-                        style: fontSmall.copyWith(fontSize: 13.sp),
+                      Expanded(
+                        flex: 5,
+                        child: SingleChildScrollView(
+                          child: Text(
+                            widget.movieDetailsModel.overview.toString(),
+                            style: fontSmall.copyWith(fontSize: 13.sp),
+                          ),
+                        ),
                       ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 5.w,
-                          ),
-                          Icon(
-                            Icons.star,
-                            color: Colors.yellow,
-                            size: 20.r,
-                          ),
-                          SizedBox(
-                            width: 5.w,
-                          ),
-                          Text(
-                            widget.movieDetailsModel.voteAverage
-                                .toString()
-                                .substring(0, 3),
-                            style: fontSmall.copyWith(
-                                color: Colors.white, fontSize: 18.sp),
-                          )
-                        ],
+                      Expanded(
+                        flex: 1,
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 5.w,
+                            ),
+                            Icon(
+                              Icons.star,
+                              color: Colors.yellow,
+                              size: 20.r,
+                            ),
+                            SizedBox(
+                              width: 5.w,
+                            ),
+                            Text(
+                              widget.movieDetailsModel.voteAverage
+                                  .toString()
+                                  .substring(0, 3),
+                              style: fontSmall.copyWith(
+                                  color: Colors.white, fontSize: 18.sp),
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
