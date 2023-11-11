@@ -67,7 +67,7 @@ class Results {
     releaseDate = json['release_date'];
     title = json['title'];
     video = json['video'];
-    voteAverage = json['vote_average'].toDouble();
+    voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
     if (json['favourite'] == null) {
       favourite = false;
@@ -88,8 +88,8 @@ class Results {
   String? releaseDate;
   String? title;
   bool? video;
-  double? voteAverage;
-  int? voteCount;
+  num? voteAverage;
+  num? voteCount;
   bool favourite = false;
 
   Map<String, dynamic> toJson() {
