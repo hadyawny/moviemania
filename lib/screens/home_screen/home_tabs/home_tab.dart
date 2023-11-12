@@ -42,7 +42,7 @@ class _HomeTabState extends State<HomeTab> {
                     }
                     if (snapshot.hasError) {
                       return Center(
-                        child: Text('Error: ${snapshot.error}'),
+                        child: Text('Please Check Your Internet',style: fontSmall,),
                       );
                     }
 
@@ -99,8 +99,10 @@ class _HomeTabState extends State<HomeTab> {
                           );
                         }
                         if (snapshot.hasError) {
-                          return Center(
-                            child: Text('Error: ${snapshot.error}'),
+                          return Expanded(
+                            child: Center(
+                              child: Text('Please Check Your Internet',style: fontSmall,),
+                            ),
                           );
                         }
 
@@ -158,8 +160,10 @@ class _HomeTabState extends State<HomeTab> {
                           );
                         }
                         if (snapshot.hasError) {
-                          return Center(
-                            child: Text('Error: ${snapshot.error}'),
+                          return Expanded(
+                            child: Center(
+                              child: Text('Please Check Your Internet',style: fontSmall,),
+                            ),
                           );
                         }
 

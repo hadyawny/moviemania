@@ -3,6 +3,7 @@ import 'package:movies_app/models/movie_details_model.dart';
 import 'package:provider/provider.dart';
 
 import '../models/movie_model.dart';
+import '../utils/fonts.dart';
 import '../view_models/movie_genre_view_model.dart';
 import '../widgets/search_tab_widgets/search_item.dart';
 
@@ -37,8 +38,13 @@ class _MovieGenreState extends State<MovieGenre> {
                     );
                   }
                   if (snapshot.hasError) {
-                    return Center(
-                      child: Text('Error: ${snapshot.error}'),
+                    return Expanded(
+                      child: Center(
+                        child: Text(
+                          'Please Check Your Internet',
+                          style: fontSmall,
+                        ),
+                      ),
                     );
                   }
 

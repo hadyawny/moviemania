@@ -22,7 +22,7 @@ class _BrowseTabState extends State<BrowseTab> {
         create: (context) => viewModel,
         child: SafeArea(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -31,7 +31,6 @@ class _BrowseTabState extends State<BrowseTab> {
                   style: fontSmall.copyWith(
                       fontSize: 25.sp, fontWeight: FontWeight.w500),
                 ),
-
                 SizedBox(
                   height: 20.h,
                 ),
@@ -44,8 +43,13 @@ class _BrowseTabState extends State<BrowseTab> {
                       );
                     }
                     if (snapshot.hasError) {
-                      return Center(
-                        child: Text('Error: ${snapshot.error}'),
+                      return Expanded(
+                        child: Center(
+                          child: Text(
+                            'Please Check Your Internet',
+                            style: fontSmall,
+                          ),
+                        ),
                       );
                     }
 

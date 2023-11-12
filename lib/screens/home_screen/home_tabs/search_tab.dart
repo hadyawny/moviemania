@@ -66,8 +66,13 @@ class _SearchTabState extends State<SearchTab> {
                     );
                   }
                   if (snapshot.hasError) {
-                    return Center(
-                      child: Text('Error: ${snapshot.error}'),
+                    return Expanded(
+                      child: Center(
+                        child: Text(
+                          'Please Check Your Internet',
+                          style: fontSmall,
+                        ),
+                      ),
                     );
                   }
 

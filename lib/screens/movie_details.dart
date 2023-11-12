@@ -31,6 +31,13 @@ class _MovieDetailsState extends State<MovieDetails> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+              onPressed: () {
+                provider.updateProvider();
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_back)),
           title: Text(
             widget.args.title.toString(),
             style: fontSmall.copyWith(fontSize: 20.sp),
@@ -51,7 +58,10 @@ class _MovieDetailsState extends State<MovieDetails> {
                     }
                     if (snapshot.hasError) {
                       return Center(
-                        child: Text('Error: ${snapshot.error}'),
+                        child: Text(
+                          'Please Check Your Internet',
+                          style: fontSmall,
+                        ),
                       );
                     }
                     MovieDetailsModel movieDetailsModel = snapshot.data!;
@@ -63,7 +73,9 @@ class _MovieDetailsState extends State<MovieDetails> {
                   },
                 ),
               ),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 10.h,
+              ),
               Container(
                 height: 230.h,
                 margin: EdgeInsets.symmetric(horizontal: 15.w),
@@ -85,14 +97,20 @@ class _MovieDetailsState extends State<MovieDetails> {
                       future:
                           viewModel.getSemilarMovies(widget.args.id.toString()),
                       builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.waiting) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
                           return const Center(
                             child: CircularProgressIndicator(),
                           );
                         }
                         if (snapshot.hasError) {
-                          return Center(
-                            child: Text('Error: ${snapshot.error}'),
+                          return Expanded(
+                            child: Center(
+                              child: Text(
+                                'Please Check Your Internet',
+                                style: fontSmall,
+                              ),
+                            ),
                           );
                         }
 
@@ -103,9 +121,12 @@ class _MovieDetailsState extends State<MovieDetails> {
                             itemCount: similar.length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              for(int i =0;i<provider.watchListIds.length;i++){
-                                if(provider.watchListIds[i]==similar[index].id){
-                                  similar[index].favourite=true;
+                              for (int i = 0;
+                                  i < provider.watchListIds.length;
+                                  i++) {
+                                if (provider.watchListIds[i] ==
+                                    similar[index].id) {
+                                  similar[index].favourite = true;
                                 }
                               }
                               return MovieCard(
