@@ -11,6 +11,10 @@ MovieMania is a Flutter-based mobile app designed by Hady Awny that brings the w
 - **Detailed Information:** Access comprehensive movie details, including cast, crew, plot summaries, and release dates.
 - **No Sign-Up Required:** Enjoy seamless movie discovery without any sign-up obligations.
 
+## Integration with TMDB
+
+MovieMania utilizes data from The Movie Database (TMDB), an extensive database with over 800,000 movies. This integration allows MovieMania to provide users with a rich library of movie information, enhancing the overall movie discovery experience.
+
 ## Installation
 
 To experience MovieMania:
