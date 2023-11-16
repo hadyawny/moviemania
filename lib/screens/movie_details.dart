@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/models/credits_model.dart';
 import 'package:movies_app/models/movie_details_model.dart';
 import 'package:movies_app/models/movie_model.dart';
 import 'package:movies_app/utils/fonts.dart';
@@ -9,6 +10,7 @@ import 'package:movies_app/widgets/movie_details_card.dart';
 import 'package:provider/provider.dart';
 
 import '../services/providers/watch_list_provider.dart';
+import '../widgets/movie_details_widgets/cast_card.dart';
 
 class MovieDetails extends StatefulWidget {
   final Results args;
@@ -86,6 +88,65 @@ class _MovieDetailsState extends State<MovieDetails> {
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 8.w),
                       child: Text(
+                        "Top Billed Cast",
+                        style: fontSmall.copyWith(fontSize: 15.sp),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    FutureBuilder(
+                      future:
+                          viewModel.getCastDetails(widget.args.id.toString()),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        if (snapshot.hasError) {
+                          return Expanded(
+                            child: Center(
+                              child: Text(
+                                'Please Check Your Internet',
+                                style: fontSmall,
+                              ),
+                            ),
+                          );
+                        }
+
+                        List<Cast> cast = snapshot.data!.cast ?? [];
+
+                        return Expanded(
+                          child: ListView.builder(
+                            itemCount: cast.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return CastCard(
+                                cast: cast[index],
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Container(
+                height: 230.h,
+                margin: EdgeInsets.symmetric(horizontal: 15.w),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 8.w),
+                      child: Text(
                         "More Like This",
                         style: fontSmall.copyWith(fontSize: 15.sp),
                       ),
@@ -139,6 +200,9 @@ class _MovieDetailsState extends State<MovieDetails> {
                     ),
                   ],
                 ),
+              ),
+              SizedBox(
+                height: 20.h,
               ),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/models/credits_model.dart';
 import 'package:movies_app/models/movie_details_model.dart';
 import 'package:movies_app/models/movie_model.dart';
 import 'package:movies_app/services/api/api_manager.dart';
@@ -23,5 +24,15 @@ class MovieDetailsViewModel extends ChangeNotifier {
     MovieModel movieModel = MovieModel.fromJson(jsonData);
 
     return movieModel;
+  }
+
+  Future<CreditsModel> getCastDetails(String movieID) async {
+    var jsonData = await ApiManager.getData(
+        EndPoints.movieDetails + movieID + EndPoints.credits,
+        {"api_key": Constants.abiKey});
+
+    CreditsModel creditsModel = CreditsModel.fromJson(jsonData);
+
+    return creditsModel;
   }
 }

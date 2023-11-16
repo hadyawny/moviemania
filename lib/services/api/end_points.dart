@@ -7,4 +7,5 @@ class EndPoints {
   static const String search = "/3/search/movie";
   static const String genre = "/3/genre/movie/list";
   static const String discover = "/3/discover/movie";
+  static const String credits = "/credits";
 }
