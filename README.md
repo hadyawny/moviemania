@@ -31,8 +31,8 @@ Once installed, users can:
 
 ## Screenshots
 
-![1](https://github.com/hadyawny/moviemania/assets/65902518/538d732d-365d-4814-8830-4f38b9ad2087)
-![2](https://github.com/hadyawny/moviemania/assets/65902518/4a7ab601-488c-4e8d-9535-1dd16ac1a696)
-![3](https://github.com/hadyawny/moviemania/assets/65902518/218fc1ba-02be-43ae-8770-e7c90cc4f054)
-![4](https://github.com/hadyawny/moviemania/assets/65902518/1feb797c-ad61-4297-88c0-f4cdb6dabe02)
-![5](https://github.com/hadyawny/moviemania/assets/65902518/d27a836f-da10-46de-9d59-872bf58048f2)
+<img src="https://github.com/hadyawny/moviemania/assets/65902518/538d732d-365d-4814-8830-4f38b9ad2087" alt="Description of the image" width="400" height="auto">
+<img src="https://github.com/hadyawny/moviemania/assets/65902518/4a7ab601-488c-4e8d-9535-1dd16ac1a696" alt="Description of the image" width="400" height="auto">
+<img src="https://github.com/hadyawny/moviemania/assets/65902518/218fc1ba-02be-43ae-8770-e7c90cc4f054" alt="Description of the image" width="400" height="auto">
+<img src="https://github.com/hadyawny/moviemania/assets/65902518/1feb797c-ad61-4297-88c0-f4cdb6dabe02" alt="Description of the image" width="400" height="auto">
+<img src="https://github.com/hadyawny/moviemania/assets/65902518/d27a836f-da10-46de-9d59-872bf58048f2" alt="Description of the image" width="400" height="auto">
