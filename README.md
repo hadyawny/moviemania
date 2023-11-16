@@ -31,9 +31,8 @@ Once installed, users can:
 
 ## Screenshots
 
-![1](https://github.com/hadyawny/moviemania/assets/65902518/a8c7d208-7459-4f46-a31f-a8ff39f40447)
-![2](https://github.com/hadyawny/moviemania/assets/65902518/df2e86ae-20e8-496e-bf65-c43865fbd31e)
-![3](https://github.com/hadyawny/moviemania/assets/65902518/35eeeafb-5dd4-4f06-86f2-07db92b5000d)
-![4](https://github.com/hadyawny/moviemania/assets/65902518/282ac3ef-0f8a-4469-8bb4-72a98d2d865d)
-![5](https://github.com/hadyawny/moviemania/assets/65902518/0233a44c-3ec9-43fa-9425-74b584fdf135)
-
+![1](https://github.com/hadyawny/moviemania/assets/65902518/538d732d-365d-4814-8830-4f38b9ad2087)
+![2](https://github.com/hadyawny/moviemania/assets/65902518/4a7ab601-488c-4e8d-9535-1dd16ac1a696)
+![3](https://github.com/hadyawny/moviemania/assets/65902518/218fc1ba-02be-43ae-8770-e7c90cc4f054)
+![4](https://github.com/hadyawny/moviemania/assets/65902518/1feb797c-ad61-4297-88c0-f4cdb6dabe02)
+![5](https://github.com/hadyawny/moviemania/assets/65902518/d27a836f-da10-46de-9d59-872bf58048f2)
