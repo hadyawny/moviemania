@@ -30,9 +30,10 @@ Once installed, users can:
 - Save favorite movies to their personalized watchlist effortlessly.
 
 ## Screenshots
-![1](https://github.com/hadyawny/movies_app/assets/65902518/0d7f14e2-2e5b-4e4c-9ec9-eb3893170618)
-![2](https://github.com/hadyawny/movies_app/assets/65902518/5b3a6e66-7692-43f5-a181-088047d0540b)
-![3](https://github.com/hadyawny/movies_app/assets/65902518/29b4f439-91ac-48f9-87d3-45e2cd05df7f)
-![4](https://github.com/hadyawny/movies_app/assets/65902518/056ed005-d967-43da-8543-df0838e0ee91)
-![5](https://github.com/hadyawny/movies_app/assets/65902518/c92267f3-5884-4e28-8169-561ad4d3e28e)
+
+![1](https://github.com/hadyawny/moviemania/assets/65902518/a8c7d208-7459-4f46-a31f-a8ff39f40447)
+![2](https://github.com/hadyawny/moviemania/assets/65902518/df2e86ae-20e8-496e-bf65-c43865fbd31e)
+![3](https://github.com/hadyawny/moviemania/assets/65902518/35eeeafb-5dd4-4f06-86f2-07db92b5000d)
+![4](https://github.com/hadyawny/moviemania/assets/65902518/282ac3ef-0f8a-4469-8bb4-72a98d2d865d)
+![5](https://github.com/hadyawny/moviemania/assets/65902518/0233a44c-3ec9-43fa-9425-74b584fdf135)
 
