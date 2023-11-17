@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/actor_details_model.dart';
+import 'package:movies_app/models/combined_credits_model.dart';
 import 'package:movies_app/models/credits_model.dart';
+import 'package:movies_app/models/movie_model.dart';
 
 import 'package:movies_app/utils/fonts.dart';
 
 import 'package:provider/provider.dart';
 
+import '../models/combined_credits_model.dart';
 import '../services/providers/watch_list_provider.dart';
 import '../view_models/actor_details_view_model.dart';
 import '../widgets/actor_details_widgets/actor_details_card.dart';
+import '../widgets/home_tab_widgets/movie_card.dart';
 
 
 class ActorDetails extends StatefulWidget {
@@ -74,6 +78,70 @@ class _ActorDetailsState extends State<ActorDetails> {
               ),
               SizedBox(
                 height: 10,
+              ),
+              Container(
+                height: 230.h,
+                margin: EdgeInsets.symmetric(horizontal: 15.w),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 8.w),
+                      child: Text(
+                        "Known For",
+                        style: fontSmall.copyWith(fontSize: 15.sp),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    FutureBuilder(
+                      future:
+                      viewModel.getKnownFor(widget.args.id.toString()),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        if (snapshot.hasError) {
+                          return Expanded(
+                            child: Center(
+                              child: Text(
+                                'Please Check Your Internet',
+                                style: fontSmall,
+                              ),
+                            ),
+                          );
+                        }
+
+                        List<Results> knownFor = snapshot.data!.results ?? [];
+
+                        return Expanded(
+                          child: ListView.builder(
+                            itemCount: knownFor.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              for (int i = 0;
+                              i < provider.watchListIds.length;
+                              i++) {
+                                if (provider.watchListIds[i] ==
+                                    knownFor[index].id) {
+                                  knownFor[index].favourite = true;
+                                }
+                              }
+                              return MovieCard(
+                                results: knownFor[index],
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 20.h,

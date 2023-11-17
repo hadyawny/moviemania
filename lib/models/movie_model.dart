@@ -52,6 +52,10 @@ class Results {
     this.video,
     this.voteAverage,
     this.voteCount,
+    this.character,
+    this.creditId,
+    this.order,
+    this.mediaType,
   });
 
   Results.fromJson(dynamic json) {
@@ -74,6 +78,10 @@ class Results {
     } else {
       favourite = json['favourite'];
     }
+    character = json['character'];
+    creditId = json['credit_id'];
+    order = json['order'];
+    mediaType = json['media_type'];
   }
 
   bool? adult;
@@ -90,7 +98,10 @@ class Results {
   bool? video;
   num? voteAverage;
   num? voteCount;
-
+  String? character;
+  String? creditId;
+  int? order;
+  String? mediaType;
   bool favourite = false;
 
   Map<String, dynamic> toJson() {
