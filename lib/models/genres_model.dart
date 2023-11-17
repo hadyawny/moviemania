@@ -21,7 +21,7 @@ class GenresModel {
   }
 
   List<Genres>? genres;
-  int? statusCode;
+  num? statusCode;
   String? statusMessage;
   bool? success;
 }

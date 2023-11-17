@@ -6,7 +6,7 @@ import 'package:movies_app/models/movie_model.dart';
 import 'package:movies_app/utils/fonts.dart';
 import 'package:movies_app/view_models/movie_details_view_model.dart';
 import 'package:movies_app/widgets/home_tab_widgets/movie_card.dart';
-import 'package:movies_app/widgets/movie_details_card.dart';
+import 'package:movies_app/widgets/movie_details_widgets/movie_details_card.dart';
 import 'package:provider/provider.dart';
 
 import '../services/providers/watch_list_provider.dart';

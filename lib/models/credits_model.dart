@@ -27,10 +27,10 @@ class CreditsModel {
     }
   }
 
-  int? id;
+  num? id;
   List<Cast>? cast;
   List<Crew>? crew;
-  int? statusCode;
+  num? statusCode;
   String? statusMessage;
   bool? success;
 

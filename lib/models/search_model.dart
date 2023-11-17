@@ -26,11 +26,11 @@ class SearchModel {
     statusMessage = json['status_message'];
   }
 
-  int? page;
+  num? page;
   List<Results>? results;
-  int? totalPages;
-  int? totalResults;
-  int? statusCode;
+  num? totalPages;
+  num? totalResults;
+  num? statusCode;
   String? statusMessage;
   bool? success;
 }

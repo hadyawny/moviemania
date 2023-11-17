@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_details_model.dart';
 import 'package:movies_app/models/movie_model.dart';
 import 'package:provider/provider.dart';
-import '../services/firebase/firebase_manager.dart';
-import '../services/providers/watch_list_provider.dart';
-import '../utils/constants.dart';
-import '../utils/fonts.dart';
+import '../../services/firebase/firebase_manager.dart';
+import '../../services/providers/watch_list_provider.dart';
+import '../../utils/constants.dart';
+import '../../utils/fonts.dart';
 
 class MovieDetailsCard extends StatefulWidget {
   final MovieDetailsModel movieDetailsModel;
@@ -128,9 +128,6 @@ class _MovieDetailsCardState extends State<MovieDetailsCard> {
                         flex: 1,
                         child: Row(
                           children: [
-                            SizedBox(
-                              width: 5.w,
-                            ),
                             Icon(
                               Icons.star,
                               color: Colors.yellow,

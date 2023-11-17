@@ -27,11 +27,11 @@ class MovieModel {
   }
 
   Dates? dates;
-  int? page;
+  num? page;
   List<Results>? results;
-  int? totalPages;
-  int? totalResults;
-  int? statusCode;
+  num? totalPages;
+  num? totalResults;
+  num? statusCode;
   String? statusMessage;
   bool? success;
 }
@@ -78,7 +78,7 @@ class Results {
 
   bool? adult;
   String? backdropPath;
-  List<int>? genreIds;
+  List<num>? genreIds;
   String? id;
   String? originalLanguage;
   String? originalTitle;
@@ -90,6 +90,7 @@ class Results {
   bool? video;
   num? voteAverage;
   num? voteCount;
+
   bool favourite = false;
 
   Map<String, dynamic> toJson() {

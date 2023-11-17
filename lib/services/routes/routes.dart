@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/models/credits_model.dart';
 import 'package:movies_app/models/movie_model.dart';
+import 'package:movies_app/screens/actor_details.dart';
 import 'package:movies_app/screens/home_screen/home_screen.dart';
 import 'package:movies_app/screens/movie_details.dart';
 import 'package:movies_app/screens/movie_genre.dart';
@@ -9,6 +11,7 @@ import '../../models/movie_details_model.dart';
 class AppRoute {
   static const String home = "/";
   static const String movieDetails = "Movie Details";
+  static const String actorDetails = "Actor Details";
   static const String movieGenre = "Movie Genre";
 }
 
@@ -26,6 +29,14 @@ class Routes {
         return MaterialPageRoute(
           builder: (context) => MovieDetails(args),
         );
+
+      case AppRoute.actorDetails:
+        final args = settings.arguments as Cast;
+
+        return MaterialPageRoute(
+          builder: (context) => ActorDetails(args),
+        );
+
       case AppRoute.movieGenre:
         final args = settings.arguments as Genres;
 

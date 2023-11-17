@@ -84,10 +84,10 @@ class MovieDetailsModel {
   bool? adult;
   String? backdropPath;
   dynamic belongsToCollection;
-  int? budget;
+  num? budget;
   List<Genres>? genres;
   String? homepage;
-  int? id;
+  num? id;
   String? imdbId;
   String? originalLanguage;
   String? originalTitle;
@@ -97,16 +97,16 @@ class MovieDetailsModel {
   List<ProductionCompanies>? productionCompanies;
   List<ProductionCountries>? productionCountries;
   String? releaseDate;
-  int? revenue;
-  int? runtime;
+  num? revenue;
+  num? runtime;
   List<SpokenLanguages>? spokenLanguages;
   String? status;
   String? tagline;
   String? title;
   bool? video;
   double? voteAverage;
-  int? voteCount;
-  int? statusCode;
+  num? voteCount;
+  num? statusCode;
   String? statusMessage;
   bool? success;
 }
