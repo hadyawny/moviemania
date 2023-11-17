@@ -6,6 +6,7 @@ class EndPoints {
   static const String actorDetails = "/3/person/";
   static const String similar = "/similar";
   static const String combinedCredits = "/combined_credits";
+  static const String images = "/images";
   static const String search = "/3/search/movie";
   static const String genre = "/3/genre/movie/list";
   static const String discover = "/3/discover/movie";

@@ -16,7 +16,8 @@ class ActorDetailsModel {
       this.profilePath,
     this.statusCode,
     this.statusMessage,
-    this.success,});
+    this.success,
+  });
 
   ActorDetailsModel.fromJson(dynamic json) {
     adult = json['adult'];

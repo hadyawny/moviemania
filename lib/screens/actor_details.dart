@@ -1,20 +1,18 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/actor_details_model.dart';
-import 'package:movies_app/models/combined_credits_model.dart';
+import 'package:movies_app/models/actor_images_model.dart';
 import 'package:movies_app/models/credits_model.dart';
 import 'package:movies_app/models/movie_model.dart';
-
 import 'package:movies_app/utils/fonts.dart';
-
 import 'package:provider/provider.dart';
-
-import '../models/combined_credits_model.dart';
 import '../services/providers/watch_list_provider.dart';
+import '../utils/constants.dart';
 import '../view_models/actor_details_view_model.dart';
 import '../widgets/actor_details_widgets/actor_details_card.dart';
 import '../widgets/home_tab_widgets/movie_card.dart';
-
 
 class ActorDetails extends StatefulWidget {
   final Cast args;
@@ -80,6 +78,76 @@ class _ActorDetailsState extends State<ActorDetails> {
                 height: 10,
               ),
               Container(
+                height: 300.h,
+                margin: EdgeInsets.symmetric(horizontal: 23.w),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Text(
+                        "Pictures",
+                        style: fontSmall.copyWith(fontSize: 15.sp),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    FutureBuilder(
+                      future: viewModel.getActorImages(widget.args.id.toString()),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        if (snapshot.hasError) {
+                          return Expanded(
+                            child: Center(
+                              child: Text(
+                                'Please Check Your Internet',
+                                style: fontSmall,
+                              ),
+                            ),
+                          );
+                        }
+
+                        List<Profiles> actorImages = snapshot.data!.profiles ?? [];
+
+                        return Expanded(
+                            child:CarouselSlider.builder(
+                              itemCount: actorImages.length,
+                              itemBuilder: (context, index, realIndex) {
+                                return Container(
+                                  margin: EdgeInsets.symmetric(),
+                                  child: CachedNetworkImage(
+                                    imageUrl:
+                                    Constants.imgPath + actorImages[index].filePath.toString(),
+                                    width: 300.w,
+                                    fit: BoxFit.cover,
+                                  ),
+                                );
+                              },
+                              options: CarouselOptions(
+                                enlargeCenterPage: true,
+                                autoPlayInterval: const Duration(seconds: 3),
+                                autoPlay: true,
+
+                              ),
+                            )
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(
+                height: 20.h,
+              ),
+
+              Container(
                 height: 230.h,
                 margin: EdgeInsets.symmetric(horizontal: 15.w),
                 child: Column(
@@ -97,8 +165,7 @@ class _ActorDetailsState extends State<ActorDetails> {
                       height: 20.h,
                     ),
                     FutureBuilder(
-                      future:
-                      viewModel.getKnownFor(widget.args.id.toString()),
+                      future: viewModel.getKnownFor(widget.args.id.toString()),
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
@@ -143,8 +210,9 @@ class _ActorDetailsState extends State<ActorDetails> {
                   ],
                 ),
               ),
+
               SizedBox(
-                height: 20.h,
+                height: 30.h,
               ),
             ],
           ),

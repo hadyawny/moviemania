@@ -5,6 +5,8 @@ import 'package:movies_app/services/api/api_manager.dart';
 import 'package:movies_app/services/api/end_points.dart';
 import 'package:movies_app/utils/constants.dart';
 
+import '../models/actor_images_model.dart';
+
 class ActorDetailsViewModel extends ChangeNotifier {
   Future<ActorDetailsModel> getActorDetails(String actorID) async {
     var jsonData = await ApiManager.getData(
@@ -25,5 +27,14 @@ class ActorDetailsViewModel extends ChangeNotifier {
     return combinedCreditsModel;
   }
 
+  Future<ActorImagesModel> getActorImages(String actorID) async {
+    var jsonData = await ApiManager.getData(
+        EndPoints.actorDetails + actorID + EndPoints.images,
+        {"api_key": Constants.abiKey});
+
+    ActorImagesModel actorImagesModel = ActorImagesModel.fromJson(jsonData);
+
+    return actorImagesModel;
+  }
 
 }
