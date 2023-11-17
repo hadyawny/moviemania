@@ -94,7 +94,8 @@ class _ActorDetailsState extends State<ActorDetails> {
                       height: 10.h,
                     ),
                     FutureBuilder(
-                      future: viewModel.getActorImages(widget.args.id.toString()),
+                      future:
+                          viewModel.getActorImages(widget.args.id.toString()),
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
@@ -113,40 +114,37 @@ class _ActorDetailsState extends State<ActorDetails> {
                           );
                         }
 
-                        List<Profiles> actorImages = snapshot.data!.profiles ?? [];
+                        List<Profiles> actorImages =
+                            snapshot.data!.profiles ?? [];
 
                         return Expanded(
-                            child:CarouselSlider.builder(
-                              itemCount: actorImages.length,
-                              itemBuilder: (context, index, realIndex) {
-                                return Container(
-                                  margin: EdgeInsets.symmetric(),
-                                  child: CachedNetworkImage(
-                                    imageUrl:
-                                    Constants.imgPath + actorImages[index].filePath.toString(),
-                                    width: 300.w,
-                                    fit: BoxFit.cover,
-                                  ),
-                                );
-                              },
-                              options: CarouselOptions(
-                                enlargeCenterPage: true,
-                                autoPlayInterval: const Duration(seconds: 3),
-                                autoPlay: true,
-
+                            child: CarouselSlider.builder(
+                          itemCount: actorImages.length,
+                          itemBuilder: (context, index, realIndex) {
+                            return Container(
+                              margin: EdgeInsets.symmetric(),
+                              child: CachedNetworkImage(
+                                imageUrl: Constants.imgPath +
+                                    actorImages[index].filePath.toString(),
+                                width: 300.w,
+                                fit: BoxFit.cover,
                               ),
-                            )
-                        );
+                            );
+                          },
+                          options: CarouselOptions(
+                            enlargeCenterPage: true,
+                            autoPlayInterval: const Duration(seconds: 3),
+                            autoPlay: true,
+                          ),
+                        ));
                       },
                     ),
                   ],
                 ),
               ),
-
               SizedBox(
                 height: 20.h,
               ),
-
               Container(
                 height: 230.h,
                 margin: EdgeInsets.symmetric(horizontal: 15.w),
@@ -192,8 +190,8 @@ class _ActorDetailsState extends State<ActorDetails> {
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
                               for (int i = 0;
-                              i < provider.watchListIds.length;
-                              i++) {
+                                  i < provider.watchListIds.length;
+                                  i++) {
                                 if (provider.watchListIds[i] ==
                                     knownFor[index].id) {
                                   knownFor[index].favourite = true;
@@ -210,7 +208,6 @@ class _ActorDetailsState extends State<ActorDetails> {
                   ],
                 ),
               ),
-
               SizedBox(
                 height: 30.h,
               ),
