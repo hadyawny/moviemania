@@ -46,8 +46,8 @@ class CastCard extends StatelessWidget {
                           width: 10.w,
                         ),
                         Text(
-                          cast.name.toString().length > 17
-                              ? cast.name.toString().substring(0, 17)
+                          cast.name.toString().length > 15
+                              ? cast.name.toString().substring(0, 15)
                               : cast.name.toString(),
                           style: fontExtraSmall.copyWith(color: Colors.white),
                         )
