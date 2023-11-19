@@ -75,7 +75,7 @@ class _ActorDetailsState extends State<ActorDetails> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 10.h,
               ),
               Container(
                 height: 300.h,
