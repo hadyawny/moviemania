@@ -84,11 +84,9 @@ class _ActorDetailsState extends State<ActorDetails> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      child: Text(
-                        "Pictures",
-                        style: fontSmall.copyWith(fontSize: 15.sp),
-                      ),
+                    Text(
+                      "Pictures",
+                      style: fontSmall.copyWith(fontSize: 15.sp),
                     ),
                     SizedBox(
                       height: 10.h,
@@ -122,7 +120,7 @@ class _ActorDetailsState extends State<ActorDetails> {
                           itemCount: actorImages.length,
                           itemBuilder: (context, index, realIndex) {
                             return Container(
-                              margin: EdgeInsets.symmetric(),
+                              margin: const EdgeInsets.symmetric(),
                               child: CachedNetworkImage(
                                 imageUrl: Constants.imgPath +
                                     actorImages[index].filePath.toString(),
