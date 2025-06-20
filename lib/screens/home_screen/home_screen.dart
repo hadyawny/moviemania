@@ -22,28 +22,27 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: BottomAppBar(
-        color: navBackGround,
-        child: BottomNavigationBar(
-            currentIndex: index,
-            onTap: (value) {
-              setState(() {
-                index = value;
-              });
-            },
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.home_filled), label: "Home"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.search), label: "Search"),
-              BottomNavigationBarItem(icon: Icon(Icons.movie), label: "Browse"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.bookmark_border), label: "Watch List"),
-            ]),
-      ),
+      // MODIFIED: Replaced BottomAppBar with BottomNavigationBar directly
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: navBackGround, // Set the background color here
+        currentIndex: index,
+        onTap: (value) {
+          setState(() {
+            index = value;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home_filled), label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search), label: "Search"),
+          BottomNavigationBarItem(icon: Icon(Icons.movie), label: "Browse"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.bookmark_border), label: "Watch List"),
+        ]),
       body: tabs[index],
     );
   }

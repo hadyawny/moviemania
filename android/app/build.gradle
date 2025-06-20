@@ -2,6 +2,8 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services" // <-- ADD THIS LINE
+
 }
 
 def localProperties = new Properties()
@@ -28,8 +30,8 @@ if (keystorePropertiesFile.exists()) {
 }
 android {
     namespace "com.example.movies_app"
-    compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    compileSdkVersion 34 // Hardcode to 34 for clarity
+    ndkVersion = "25.1.8937393"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -49,11 +51,11 @@ android {
         applicationId "com.hadyawny.moviemania"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 21 // Use a fixed number
+        targetSdkVersion 34 // Hardcode to 34 for Google Play
         multiDexEnabled true
-        versionCode 3
-        versionName "1.1.1"
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
     }
 
     signingConfigs {
@@ -76,6 +78,6 @@ flutter {
 }
 
 dependencies {
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'androidx.multidex:multidex:2.0.1' // <--- Use this instead
 
 }

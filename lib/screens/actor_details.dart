@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/actor_details_model.dart';
@@ -116,25 +116,32 @@ class _ActorDetailsState extends State<ActorDetails> {
                             snapshot.data!.profiles ?? [];
 
                         return Expanded(
-                            child: CarouselSlider.builder(
-                          itemCount: actorImages.length,
-                          itemBuilder: (context, index, realIndex) {
-                            return Container(
-                              margin: const EdgeInsets.symmetric(),
-                              child: CachedNetworkImage(
-                                imageUrl: Constants.imgPath +
-                                    actorImages[index].filePath.toString(),
-                                width: 300.w,
-                                fit: BoxFit.cover,
-                              ),
-                            );
-                          },
-                          options: CarouselOptions(
-                            enlargeCenterPage: true,
-                            autoPlayInterval: const Duration(seconds: 3),
-                            autoPlay: true,
+                          child: Swiper(
+                            itemCount: actorImages.length,
+                            itemBuilder: (context, index) {
+                              // The builder is simpler, no realIndex
+                              return Container(
+                                // You might want to add a clipRRect for rounded corners
+                                // For example: ClipRRect(borderRadius: BorderRadius.circular(8.0), child: ... )
+                                margin: const EdgeInsets.symmetric(),
+                                child: CachedNetworkImage(
+                                  imageUrl: Constants.imgPath +
+                                      actorImages[index].filePath.toString(),
+                                  width: 300.w,
+                                  fit: BoxFit.cover,
+                                ),
+                              );
+                            },
+                            // These properties replace enlargeCenterPage: true
+                            viewportFraction: 0.8,
+                            scale: 0.9,
+
+                            // These properties replace the autoPlay settings
+                            autoplay: true,
+                            autoplayDelay:
+                                3000, // Note: uses milliseconds instead of Duration
                           ),
-                        ));
+                        );
                       },
                     ),
                   ],

@@ -1,5 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
+import 'package:card_swiper/card_swiper.dart';import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/models/movie_model.dart';
 import 'package:movies_app/utils/fonts.dart';
@@ -48,26 +47,24 @@ class _HomeTabState extends State<HomeTab> {
 
                     List<Results> popular = snapshot.data!.results ?? [];
 
-                    return CarouselSlider.builder(
-                        itemCount: popular.length,
-                        itemBuilder: (context, index, realIndex) {
-
-                          for(int i =0;i<provider.watchListIds.length;i++){
-                            if(provider.watchListIds[i]==popular[index].id){
-                              popular[index].favourite=true;
-                            }
-                          }
-
-                          return PopularMovieCard(
-                            results: popular[index],
-                          );
-                        },
-                        options: CarouselOptions(
-                          viewportFraction: 1.0,
-                          enlargeCenterPage: false,
-                          autoPlayInterval: const Duration(seconds: 3),
-                          autoPlay: true,
-                        ));
+                    return Swiper(
+  itemCount: popular.length,
+  itemBuilder: (context, index) { // The new builder is simpler
+    // ... your logic
+    for(int i =0;i<provider.watchListIds.length;i++){
+      if(provider.watchListIds[i]==popular[index].id){
+        popular[index].favourite=true;
+      }
+    }
+    return PopularMovieCard(
+      results: popular[index],
+    );
+  },
+  viewportFraction: 1.0,
+  scale: 1, // Use scale: 1 instead of enlargeCenterPage: false
+  autoplay: true,
+  autoplayDelay: 3000, // Note: delay is in milliseconds
+);
                   },
                 ),
               ),

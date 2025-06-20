@@ -49,7 +49,7 @@ class _MovieDetailsState extends State<MovieDetails> {
           child: Column(
             children: [
               SizedBox(
-                height: 520.h,
+                height: 525.h,
                 child: FutureBuilder(
                   future: viewModel.getMovieDetails(widget.args.id.toString()),
                   builder: (context, snapshot) {
