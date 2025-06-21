@@ -29,7 +29,7 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 android {
-    namespace "com.example.movies_app"
+    namespace "com.hadyawny.moviemania"
     compileSdkVersion 34 // Hardcode to 34 for clarity
     ndkVersion = "25.1.8937393"
 
