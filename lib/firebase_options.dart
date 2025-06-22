@@ -50,19 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC3t6yAbq-L2ZFmL_5-1N_dMvL5DHMJCEk',
-    appId: '1:1063812767719:android:d7c6bfd44c8c9bc8e1e742',
-    messagingSenderId: '1063812767719',
-    projectId: 'movies-app-36092',
-    storageBucket: 'movies-app-36092.appspot.com',
+    apiKey: 'AIzaSyBz-EiGtDRug7pinP6w2G67kGe58rjUMjQ',
+    appId: '1:149219180839:android:ad2eeb0d8af24d2f9fe902',
+    messagingSenderId: '149219180839',
+    projectId: 'moviemania-cac32',
+    storageBucket: 'moviemania-cac32.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyByh8Luz0XrwbnGJ9gfwEt00ilGxyS5Ooc',
-    appId: '1:1063812767719:ios:6b472c81d5d8af56e1e742',
-    messagingSenderId: '1063812767719',
-    projectId: 'movies-app-36092',
-    storageBucket: 'movies-app-36092.appspot.com',
-    iosBundleId: 'com.example.moviesApp',
+    apiKey: 'AIzaSyAXtqpWOY4TpkbLnPXfN9DYKN8E8Eyi3DU',
+    appId: '1:149219180839:ios:3ad910516e9ca7849fe902',
+    messagingSenderId: '149219180839',
+    projectId: 'moviemania-cac32',
+    storageBucket: 'moviemania-cac32.firebasestorage.app',
+    iosBundleId: 'com.hadyawny.moviemania',
   );
+
 }
